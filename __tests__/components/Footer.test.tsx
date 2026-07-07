@@ -9,12 +9,12 @@ import type { SiteConfig } from '../../types/config';
 const mockSite: SiteConfig = {
   name: 'HeadlessEngineer',
   tagline: 'Tech solutions for business problems.',
-  url: 'https://headlessengineer.studio',
+  url: 'https://headlessengineer.xyz',
   description: 'Test description',
   author: {
     name: 'Karan Popat',
     role: 'Founder & Lead Architect',
-    email: 'hello@headlessengineer.studio',
+    email: 'contact@headlessengineer.xyz',
   },
   keywords: [],
   social: {
@@ -74,7 +74,7 @@ describe('Footer - SPEC-007 acceptance criteria', () => {
   // ── AC-5: Connect column links ─────────────────────────────────────────────
   it('AC-5: email link uses mailto href', () => {
     render(<Footer site={mockSite} />);
-    const link = document.querySelector('a[href="mailto:hello@headlessengineer.studio"]');
+    const link = document.querySelector('a[href="mailto:contact@headlessengineer.xyz"]');
     expect(link).not.toBeNull();
   });
 
@@ -101,11 +101,6 @@ describe('Footer - SPEC-007 acceptance criteria', () => {
     render(<Footer site={mockSite} />);
     const year = new Date().getFullYear();
     expect(screen.getByText(new RegExp(`© ${year} HeadlessEngineer`))).toBeInTheDocument();
-  });
-
-  it('AC-6: renders "Founded by Karan Popat"', () => {
-    render(<Footer site={mockSite} />);
-    expect(screen.getByText('Founded by Karan Popat')).toBeInTheDocument();
   });
 
   // ── AC-2/3/7/8/9: CSS file assertions ─────────────────────────────────────

@@ -1,5 +1,5 @@
 .section {
-  min-height: var(--section-min-h);
+  min-height: var(--section-h-third);
   display: flex;
   flex-direction: column;
   justify-content: center;

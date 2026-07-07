@@ -14,10 +14,10 @@ import styles from './about.module.css';
 export function generateMetadata(): Metadata {
   const { about } = getConfig();
   return {
-    title: 'Studio',
+    title: 'About',
     description: about.metadata.description,
     openGraph: {
-      title: 'Studio',
+      title: 'About',
       description: about.metadata.description,
     },
   };
@@ -31,7 +31,7 @@ export default function AboutPage(): JSX.Element {
       {about.sections.hero.visible && (
         <section className={styles.pageHero}>
           <div className={styles.heroContainer}>
-            <span className={styles.eyebrow}>Studio</span>
+            <span className={styles.eyebrow}>About</span>
             <h1 className={styles.heroTitle}>{about.hero.title}</h1>
             <p className={styles.heroBody}>{about.hero.subtitle}</p>
           </div>
@@ -59,11 +59,11 @@ export default function AboutPage(): JSX.Element {
       {about.sections.principles.visible && <Principles principles={about.principles} />}
 
       {about.sections.founder.visible && (
-        <section className={styles.founderSection} aria-label="Behind the Studio">
+        <section className={styles.founderSection} aria-label="Behind the Company">
           <div className={styles.founderContainer}>
             <Panel grid>
               <div>
-                <span className={styles.eyebrow}>Behind the Studio</span>
+                <span className={styles.eyebrow}>Behind the Company</span>
                 <div className={styles.founderName}>{about.founder.name}</div>
                 <div className={styles.founderRole}>{about.founder.role}</div>
               </div>

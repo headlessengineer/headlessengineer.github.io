@@ -12,7 +12,7 @@ export function MetricsStrip({ metrics }: MetricsStripProps): JSX.Element {
   const ref = useScrollReveal('.reveal');
 
   return (
-    <section ref={ref} className={styles.strip} aria-label="Studio metrics">
+    <section ref={ref} className={styles.strip} aria-label="Company metrics">
       <div className={styles.container}>
         {metrics.map((metric) => (
           <div key={metric.figure} className={`${styles.metric} reveal`}>

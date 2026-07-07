@@ -4,15 +4,13 @@ import { siteConfig } from '../../config/site';
 describe('siteConfig - SPEC-001 acceptance criteria', () => {
   it('AC-1: name is "HeadlessEngineer" and tagline is the full rebranded copy', () => {
     expect(siteConfig.name).toBe('HeadlessEngineer');
-    expect(siteConfig.tagline).toBe(
-      'Enterprise e-commerce backends. Production AI workflows. No theatre.',
-    );
+    expect(siteConfig.tagline).toBe('Engineered for the problem.');
   });
 
   it('AC-3: navigation has exactly 6 items with correct labels and hrefs in order', () => {
     expect(siteConfig.navigation).toEqual([
       { label: 'Home', href: '/' },
-      { label: 'Studio', href: '/about' },
+      { label: 'About', href: '/about' },
       { label: 'Services', href: '/services' },
       { label: 'Work', href: '/work' },
       { label: 'Writing', href: '/articles' },

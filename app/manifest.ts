@@ -4,9 +4,9 @@ export const dynamic = 'force-static';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Karan Popat',
-    short_name: 'popatkaran',
-    description: 'Lead Software Engineer & Tech Architect',
+    name: 'HeadlessEngineer',
+    short_name: 'headlessengineer',
+    description: 'Engineered for the problem.',
     start_url: '/',
     display: 'standalone',
     background_color: '#0e0f0e',

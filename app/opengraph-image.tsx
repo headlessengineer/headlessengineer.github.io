@@ -72,7 +72,7 @@ export default function OgImage() {
             marginTop: 8,
           }}
         >
-          headlessengineer.studio
+          headlessengineer.xyz
         </div>
       </div>
     ),

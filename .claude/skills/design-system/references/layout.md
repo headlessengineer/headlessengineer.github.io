@@ -15,6 +15,28 @@ Header/nav: 64px, `bg` fill.
 **Sections:** vertical padding `4xl` (64px) desktop / `3xl` (48px) mobile.
 Vertical rhythm by spacing alone — no separator borders between sections.
 
+**Hero containers:** always `max-width: var(--max-width)` (1280px). Never use a narrower
+hardcoded value (860px, 760px, etc.) — the container's internal padding and the copy's
+natural line length already control reading width.
+
+---
+
+## Section Min-Height Scale
+
+Four tokens cover every section. Choose by content density; hero is always full.
+
+| Token | Value | Use |
+|---|---|---|
+| `--section-h-full` | 100vh / 100svh | Every hero section — non-negotiable |
+| `--section-h-half` | 50vh / 50svh | Card grids with 3–8 items (CoreServices, Expertise, Principles, Certifications, Testimonials, offerings, methods) |
+| `--section-h-third` | 33vh / 33svh | Single-concept panels and forms (howWeWork, contact form, Spotlight) |
+| `--section-h-quarter` | 25vh / 25svh | CTA bands — title + action only |
+
+**Rules:**
+- Use `--section-h-full` for every `.pageHero` and the Home `Hero` organism. No exceptions.
+- Never use the legacy `--section-min-h` for new sections; it remains only on error/not-found pages.
+- `svh` overrides are declared in globals.css under `@supports (min-height: 1svh)` — do not add them per-component.
+
 ---
 
 ## Page Section Rhythm

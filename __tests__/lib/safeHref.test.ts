@@ -12,8 +12,8 @@ describe('safeHref - SPEC-014 AC-15', () => {
   });
 
   it('passes mailto: URLs unchanged', () => {
-    expect(safeHref('mailto:hello@headlessengineer.studio')).toBe(
-      'mailto:hello@headlessengineer.studio',
+    expect(safeHref('mailto:contact@headlessengineer.xyz')).toBe(
+      'mailto:contact@headlessengineer.xyz',
     );
   });
 

@@ -1,12 +1,12 @@
 .section {
-  min-height: var(--section-min-h);
+  min-height: var(--section-h-half);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .sectionFullHeight {
-  min-height: var(--section-min-h);
+  min-height: var(--section-h-half);
   display: flex;
   flex-direction: column;
   justify-content: center;

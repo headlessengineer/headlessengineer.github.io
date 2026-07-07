@@ -16,9 +16,9 @@ export const contactConfig = {
   methods: [
     {
       title: 'Email',
-      value: 'hello@headlessengineer.studio',
+      value: 'contact@headlessengineer.xyz',
       description: 'Send us a message directly',
-      href: 'mailto:hello@headlessengineer.studio',
+      href: 'mailto:contact@headlessengineer.xyz',
     },
     {
       title: 'Schedule a call',
@@ -29,7 +29,7 @@ export const contactConfig = {
     {
       title: 'LinkedIn',
       value: 'linkedin.com/in/popatkaran',
-      description: 'Connect with the founder',
+      description: 'Connect on LinkedIn',
       href: 'https://linkedin.com/in/popatkaran',
     },
     {

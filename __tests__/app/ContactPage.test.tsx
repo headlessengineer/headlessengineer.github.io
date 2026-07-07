@@ -61,8 +61,8 @@ describe('ContactPage - SPEC-021 acceptance criteria', () => {
     expect(screen.getByText(contactConfig.subtitle)).toBeInTheDocument();
   });
 
-  it('AC1: CSS declares max-width 760px on hero container', () => {
-    expect(css).toContain('760px');
+  it('AC1: CSS declares max-width var(--max-width) on hero container', () => {
+    expect(css).toContain('var(--max-width)');
   });
 
   it('AC1: CSS uses var(--font-size-lg) for hero body', () => {

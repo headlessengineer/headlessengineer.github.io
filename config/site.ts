@@ -3,22 +3,21 @@ import type { SiteConfig } from '../types/config';
 export const siteConfig: SiteConfig = {
   name: 'HeadlessEngineer',
 
-  tagline: 'Enterprise e-commerce backends. Production AI workflows. No theatre.',
+  tagline: 'Engineered for the problem.',
 
-  url: 'https://headlessengineer.studio',
+  url: 'https://headlessengineer.xyz',
 
   description:
-    'headlessengineer is a technology consultancy that solves business problems with the right technology - software engineering, solution architecture, enterprise architecture, and AI. Founded and led by Karan Popat.',
+    'headlessengineer is a technology consultancy that solves business problems with the right technology - software engineering, solution architecture, enterprise architecture, and AI.',
 
   author: {
-    name: 'Karan Popat',
-    role: 'Founder & Lead Architect',
-    email: 'hello@headlessengineer.studio',
+    name: 'HeadlessEngineer',
+    role: 'Lead Architect',
+    email: 'contact@headlessengineer.xyz',
   },
 
   keywords: [
     'headlessengineer',
-    'Karan Popat',
     'technology consultancy',
     'solution architecture',
     'enterprise architecture',
@@ -41,7 +40,7 @@ export const siteConfig: SiteConfig = {
 
   navigation: [
     { label: 'Home', href: '/' },
-    { label: 'Studio', href: '/about' },
+    { label: 'About', href: '/about' },
     { label: 'Services', href: '/services' },
     { label: 'Work', href: '/work' },
     { label: 'Writing', href: '/articles' },

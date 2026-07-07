@@ -1,5 +1,5 @@
 .pageHero {
-  min-height: var(--section-min-h);
+  min-height: var(--section-h-full);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +15,7 @@
 }
 
 .heroContainer {
-  max-width: 860px;
+  max-width: var(--max-width);
   margin: 0 auto;
   padding: var(--sp-4xl) var(--sp-lg);
 }
@@ -45,7 +45,7 @@
 }
 
 .howWeWork {
-  min-height: var(--section-min-h);
+  min-height: var(--section-h-third);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,7 +70,7 @@
 
 .founderSection {
   background-color: var(--surface);
-  min-height: var(--section-min-h);
+  min-height: var(--section-h-third);
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -6,7 +6,7 @@ export const testimonialsConfig: TestimonialsConfig = {
   },
   metadata: {
     title: 'Testimonials - HeadlessEngineer',
-    description: "What it's like to work with the studio.",
+    description: "What it's like to work with us.",
   },
   hero: {
     title: 'Testimonials',
@@ -20,7 +20,7 @@ export const testimonialsConfig: TestimonialsConfig = {
     {
       id: 'testimonial-1',
       quote:
-        'Karan took ownership of a messy Spryker migration and delivered a clean, documented outcome on time. Rare to find someone who can both architect and ship.',
+        'The team took ownership of a messy Spryker migration and delivered a clean, documented outcome on time. Rare to find engineers who can both architect and ship.',
       author: 'Stefan Meier',
       role: 'VP Engineering',
       company: 'REWE Digital',
@@ -28,7 +28,7 @@ export const testimonialsConfig: TestimonialsConfig = {
     {
       id: 'testimonial-2',
       quote:
-        'The AI workflow he built for our content team cut review cycles from three days to four hours. Practical, not flashy - exactly what we needed.',
+        'The AI workflow built for our content team cut review cycles from three days to four hours. Practical, not flashy - exactly what we needed.',
       author: 'Priya Nair',
       role: 'Head of Product',
       company: 'Limango',

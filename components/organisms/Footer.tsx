@@ -31,9 +31,9 @@ export function Footer({ site }: FooterProps): React.JSX.Element {
             <p className={styles.tagline}>{site.tagline}</p>
           </div>
 
-          {/* Col 2: Studio */}
+          {/* Col 2: About */}
           <div className={styles.col}>
-            <span className={styles.colHeading}>Studio</span>
+            <span className={styles.colHeading}>About</span>
             <ul className={styles.colList}>
               {studioLinks.map((item) => (
                 <li key={item.href}>
@@ -83,9 +83,9 @@ export function Footer({ site }: FooterProps): React.JSX.Element {
             </ul>
           </div>
 
-          {/* Col 4: Studio / Location */}
+          {/* Col 4: Location */}
           <div className={styles.col}>
-            <span className={styles.colHeading}>Studio</span>
+            <span className={styles.colHeading}>Location</span>
             <ul className={styles.colList}>
               <li>
                 <Link href="/contact">Contact</Link>
@@ -99,9 +99,6 @@ export function Footer({ site }: FooterProps): React.JSX.Element {
         <div className={styles.bottom}>
           <span className={styles.bottomText}>
             &copy; {new Date().getFullYear()} HeadlessEngineer. All rights reserved.
-          </span>
-          <span className={styles.bottomText}>
-            Founded by {site.author.name}
           </span>
         </div>
       </div>

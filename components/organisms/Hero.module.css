@@ -1,5 +1,5 @@
 .hero {
-  min-height: var(--section-min-h);
+  min-height: var(--section-h-full);
   display: flex;
   flex-direction: column;
   justify-content: center;

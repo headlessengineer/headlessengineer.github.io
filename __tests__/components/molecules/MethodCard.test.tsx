@@ -17,9 +17,9 @@ const src = readFileSync(
 
 const baseProps = {
   title: 'Email',
-  value: 'hello@headlessengineer.studio',
+  value: 'contact@headlessengineer.xyz',
   description: 'Send us a message directly',
-  href: 'mailto:hello@headlessengineer.studio',
+  href: 'mailto:contact@headlessengineer.xyz',
 };
 
 describe('MethodCard - SPEC-014 acceptance criteria', () => {
@@ -33,7 +33,7 @@ describe('MethodCard - SPEC-014 acceptance criteria', () => {
     const { container } = render(<MethodCard {...baseProps} />);
     expect(container.firstChild).toHaveAttribute(
       'href',
-      'mailto:hello@headlessengineer.studio',
+      'mailto:contact@headlessengineer.xyz',
     );
   });
 

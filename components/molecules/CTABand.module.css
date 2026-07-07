@@ -4,9 +4,6 @@
   align-items: center;
   text-align: center;
   gap: var(--sp-xl);
-  background: var(--elevated);
-  border-radius: var(--r-xl);
-  padding: var(--sp-3xl);
 }
 
 .description {

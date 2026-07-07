@@ -7,20 +7,20 @@ export const aboutConfig = {
     howWeWork:    { visible: true },
     expertise:    { visible: true },
     principles:   { visible: true },
-    founder:      { visible: true },
+    founder:      { visible: false },
     certifications: { visible: true },
     cta:          { visible: true },
   },
 
   metadata: {
     description:
-      'headlessengineer is a technology consultancy founded by Karan Popat, helping businesses solve problems through software engineering, solution architecture, enterprise architecture, and AI.',
+      'headlessengineer is a technology consultancy helping businesses solve problems through software engineering, solution architecture, enterprise architecture, and AI.',
   },
 
   hero: {
     title: 'Who Is headlessengineer?',
     subtitle:
-      'headlessengineer is a technology consultancy built for businesses that have a problem, not necessarily a tech stack in mind. We work across software engineering, solution architecture, and enterprise architecture - scoping every engagement around the business outcome first, then assembling the right technical approach and, where useful, the right specialists to deliver it. The studio is founded by Karan Popat, a Lead Software Engineer and Technology Architect, and is built as a growing network of engineers and architects across disciplines, not a one-person shop pretending otherwise.',
+      'headlessengineer is a technology consultancy built for businesses that have a problem, not necessarily a tech stack in mind. We work across software engineering, solution architecture, and enterprise architecture - scoping every engagement around the business outcome first, then assembling the right technical approach and, where useful, the right specialists to deliver it. Built as a growing network of engineers and architects across disciplines, not a one-person shop pretending otherwise.',
   },
 
   coreServices: {
@@ -75,7 +75,7 @@ export const aboutConfig = {
     title: "How We're Staffed",
     description: 'A core of senior technical judgment, a network built to scale',
     content:
-      'headlessengineer runs on a core-plus-network model. Founder Karan Popat leads every engagement as senior architect and technical point of contact, and we bring in vetted specialist engineers - frontend, mobile, data, DevOps, whatever a specific problem needs - rather than forcing every engagement through one person\'s skill set. As the studio grows, that network becomes a standing team; today, it\'s assembled per engagement so you\'re never paying for expertise you don\'t need.',
+      'headlessengineer runs on a core-plus-network model. A senior architect leads every engagement as the technical point of contact, and we bring in vetted specialist engineers - frontend, mobile, data, DevOps, whatever a specific problem needs - rather than forcing every engagement through one person\'s skill set. As we grow, that network becomes a standing team; today, it\'s assembled per engagement so you\'re never paying for expertise you don\'t need.',
   },
 
   expertise: {
@@ -163,7 +163,7 @@ export const aboutConfig = {
   },
 
   founder: {
-    title: 'Behind the Studio',
+    title: 'Behind the Company',
     name: 'Karan Popat',
     role: 'Founder & Lead Architect',
     bio: 'Karan has spent 12+ years building enterprise platforms - from greenfield commerce backends to distributed Go microservices running across 26 countries - and currently leads engineering teams of 9–15 at Accenture Song. He founded headlessengineer to bring that depth directly to businesses, and to build a consultancy that isn\'t bounded by any one person\'s stack: a core of senior architectural judgment, backed by a growing network of specialist engineers brought in as each engagement requires.',
@@ -172,7 +172,7 @@ export const aboutConfig = {
 
   certifications: {
     title: 'Credentials Behind the Work',
-    description: "Formal recognition backing the studio's expertise",
+    description: "Formal recognition backing our expertise",
     certifications: [
       {
         title: 'Anthropic',

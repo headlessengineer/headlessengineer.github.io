@@ -54,7 +54,7 @@ function makeMockArticle(i: number): Article {
       metaTitle: `Article ${i}`,
       metaDescription: `Desc ${i}`,
       keywords: ['test'],
-      canonicalUrl: `https://headlessengineer.studio/articles/article-${i}`,
+      canonicalUrl: `https://headlessengineer.xyz/articles/article-${i}`,
       ogImage: '/og.png',
     },
     published: true,

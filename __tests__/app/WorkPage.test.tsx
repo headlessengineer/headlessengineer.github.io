@@ -53,7 +53,7 @@ function makeMockProject(i: number): Project {
       metaTitle: `Project ${i}`,
       metaDescription: `Desc ${i}`,
       keywords: ['test'],
-      canonicalUrl: `https://headlessengineer.studio/projects/project-${i}`,
+      canonicalUrl: `https://headlessengineer.xyz/projects/project-${i}`,
       ogImage: '/og.png',
     },
     published: true,

@@ -25,18 +25,6 @@ describe('CTABand - SPEC-010 acceptance criteria', () => {
     expect(container.firstChild).toHaveClass('ctaBand');
   });
 
-  it('AC1: CSS has --elevated background', () => {
-    expect(css).toContain('var(--elevated)');
-  });
-
-  it('AC1: CSS has --r-xl border-radius', () => {
-    expect(css).toContain('var(--r-xl)');
-  });
-
-  it('AC1: CSS has --sp-3xl padding', () => {
-    expect(css).toContain('var(--sp-3xl)');
-  });
-
   it('AC1: CSS has text-align center', () => {
     expect(css).toContain('text-align: center');
   });

@@ -94,8 +94,8 @@ describe('ServicesPage - SPEC-020 acceptance criteria', () => {
     expect(screen.getByText(servicesConfig.hero.description)).toBeInTheDocument();
   });
 
-  it('AC1: CSS declares max-width 760px on heroContainer', () => {
-    expect(css).toContain('760px');
+  it('AC1: CSS declares max-width var(--max-width) on heroContainer', () => {
+    expect(css).toContain('var(--max-width)');
   });
 
   // ── AC2: chips - "All" prepended ──────────────────────────────────────

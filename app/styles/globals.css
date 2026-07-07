@@ -85,8 +85,14 @@
   --breakpoint-md: 1024px;
   --header-height: 64px;
   --footer-height: 240px;
-  /* Single token: change here to resize every section at once (50vh, 60vh, 100svh, …) */
+  /* Legacy catch-all — used only by error/not-found pages */
   --section-min-h: 100vh;
+
+  /* ── Section height scale ── */
+  --section-h-full:    100vh;  /* Hero sections — always full viewport */
+  --section-h-half:    50vh;   /* Card grids, multi-item lists (3–8 items) */
+  --section-h-third:   33vh;   /* Panels, forms — single concept, moderate text */
+  --section-h-quarter: 25vh;   /* CTA bands — title + action only */
 
   /* ── Motion ── */
   --duration-fast: 150ms;
@@ -158,7 +164,11 @@
    Browsers without svh support keep the 100vh fallback set in :root above. */
 @supports (min-height: 1svh) {
   :root {
-    --section-min-h: 100svh;
+    --section-min-h:     100svh;
+    --section-h-full:    100svh;
+    --section-h-half:    50svh;
+    --section-h-third:   33svh;
+    --section-h-quarter: 25svh;
   }
 }
 

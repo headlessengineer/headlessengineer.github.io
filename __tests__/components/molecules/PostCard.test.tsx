@@ -38,7 +38,7 @@ const mockArticle: Article = {
     metaTitle: 'Test',
     metaDescription: 'Test desc',
     keywords: ['test'],
-    canonicalUrl: 'https://headlessengineer.studio/articles/test-article',
+    canonicalUrl: 'https://headlessengineer.xyz/articles/test-article',
     ogImage: '/og.png',
   },
   published: true,

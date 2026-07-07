@@ -1,5 +1,5 @@
 .testimonialsSection {
-  min-height: var(--section-min-h);
+  min-height: var(--section-h-half);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,7 +32,7 @@
 }
 
 .ctaSection {
-  min-height: var(--section-min-h);
+  min-height: var(--section-h-quarter);
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -1,6 +1,6 @@
 .section {
   background-color: var(--surface);
-  min-height: var(--section-min-h);
+  min-height: var(--section-h-half);
   display: flex;
   flex-direction: column;
   justify-content: center;

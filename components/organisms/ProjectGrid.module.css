@@ -1,12 +1,12 @@
 .section {
-  min-height: 50vh;
+  min-height: var(--section-h-half);
   display: flex;
   align-items: center;
   background-color: var(--surface);
 }
 
 .sectionFullHeight {
-  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  min-height: var(--section-h-half);
   display: flex;
   align-items: center;
   background-color: var(--surface);

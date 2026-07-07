@@ -110,9 +110,9 @@ const { default: AboutPage } = await import('../../app/about/page');
 describe('AboutPage - SPEC-017 + SPEC-019 acceptance criteria (page-level)', () => {
   // ── AC1: page-hero content ────────────────────────────────────────────
 
-  it('AC1: eyebrow reads "Studio"', () => {
+  it('AC1: eyebrow reads "About"', () => {
     render(<AboutPage />);
-    expect(screen.getByText('Studio')).toBeInTheDocument();
+    expect(screen.getByText('About')).toBeInTheDocument();
   });
 
   it('AC1: h1 reads about.hero.title', () => {
@@ -124,8 +124,8 @@ describe('AboutPage - SPEC-017 + SPEC-019 acceptance criteria (page-level)', () 
 
   // ── AC2: hero container max-width ─────────────────────────────────────
 
-  it('AC2: CSS declares max-width 860px on .heroContainer', () => {
-    expect(css).toContain('860px');
+  it('AC2: CSS declares max-width var(--max-width) on .heroContainer', () => {
+    expect(css).toContain('var(--max-width)');
   });
 
   // ── AC5: howWeWork section heading ────────────────────────────────────
@@ -157,9 +157,9 @@ describe('AboutPage - SPEC-017 + SPEC-019 acceptance criteria (page-level)', () 
     expect(screen.getByText(MOCK_ABOUT.founder.bio)).toBeInTheDocument();
   });
 
-  it('SPEC-019 AC1: founder section eyebrow reads "Behind the Studio"', () => {
+  it('SPEC-019 AC1: founder section eyebrow reads "Behind the Company"', () => {
     render(<AboutPage />);
-    expect(screen.getByText('Behind the Studio')).toBeInTheDocument();
+    expect(screen.getByText('Behind the Company')).toBeInTheDocument();
   });
 
   it('SPEC-019 AC1: CSS declares 20px for .founderName', () => {

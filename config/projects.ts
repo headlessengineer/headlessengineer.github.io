@@ -7,7 +7,7 @@ export const projectsConfig: ProjectsConfig = {
   },
   metadata: {
     title: 'Work - HeadlessEngineer',
-    description: 'Case studies and engineering work from the studio.',
+    description: 'Case studies and engineering work from headlessengineer.',
   },
   hero: {
     title: 'Work',

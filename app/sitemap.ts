@@ -4,7 +4,7 @@ import { getAllProjects } from '../lib/projects';
 
 export const dynamic = 'force-static';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://popatkaran.github.io';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://headlessengineer.xyz';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

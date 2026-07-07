@@ -1,5 +1,5 @@
 .pageHero {
-  min-height: var(--section-min-h);
+  min-height: var(--section-h-full);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,7 +15,7 @@
 }
 
 .heroContainer {
-  max-width: 760px;
+  max-width: var(--max-width);
   margin: 0 auto;
   padding: var(--sp-4xl) var(--sp-lg);
 }
@@ -52,7 +52,7 @@
 
 .methodsSection {
   background: var(--surface);
-  min-height: var(--section-min-h);
+  min-height: var(--section-h-half);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -65,7 +65,7 @@
 }
 
 .formSection {
-  min-height: var(--section-min-h);
+  min-height: var(--section-h-third);
   display: flex;
   flex-direction: column;
   justify-content: center;

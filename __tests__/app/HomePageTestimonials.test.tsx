@@ -51,7 +51,7 @@ const MOCK_SITE: SiteConfig = {
   name: 'HeadlessEngineer',
   tagline: 'Tagline',
   description: 'Desc',
-  url: 'https://headlessengineer.studio',
+  url: 'https://headlessengineer.xyz',
   author: { name: 'Karan Popat', role: 'Founder', email: 'k@test.com' },
   keywords: [],
   social: {},
