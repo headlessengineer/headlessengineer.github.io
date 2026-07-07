@@ -1,0 +1,35 @@
+.section {
+  min-height: var(--section-min-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  padding: var(--sp-4xl) var(--sp-lg);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--fg);
+  margin: 0;
+}
+
+.title::before {
+  color: var(--primary);
+}
+
+.content h5 {
+  color: var(--fg-secondary);
+  line-height: var(--line-height-relaxed);
+  margin: 0;
+}
+

@@ -1,0 +1,50 @@
+.title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--fg);
+}
+
+.excerpt {
+  font-size: var(--font-size-sm);
+  color: var(--fg-secondary);
+  line-height: var(--line-height-base);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: var(--sp-xs) 0 var(--sp-md);
+}
+
+.author {
+  margin-bottom: var(--sp-md);
+}
+
+.authorName {
+  font-weight: var(--font-weight-bold);
+  color: var(--fg);
+}
+
+.authorRole {
+  color: var(--fg-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.authorCompany {
+  color: var(--fg-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.meta {
+  display: flex;
+  gap: var(--sp-xs);
+  font-size: var(--font-size-sm);
+  color: var(--fg-secondary);
+  margin-top: auto;
+  padding-top: var(--sp-md);
+  align-items: center;
+}
+
+.date {
+  color: var(--fg-secondary);
+}

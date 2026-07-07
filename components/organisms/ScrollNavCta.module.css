@@ -1,0 +1,18 @@
+.cta {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.ctaVisible {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+@media (max-width: 768px) {
+  .cta,
+  .ctaVisible {
+    display: none;
+  }
+}

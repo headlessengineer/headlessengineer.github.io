@@ -1,0 +1,33 @@
+.card {
+  display: block;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  background: var(--surface-card);
+  border-radius: var(--r-lg);
+  padding: var(--sp-lg);
+  transition: background-color var(--dur-base) var(--ease-out);
+}
+
+.label {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.methodValue {
+  color: var(--primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  margin: var(--sp-xs) 0;
+  word-break: break-word;
+}
+
+.description {
+  color: var(--fg-secondary);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}

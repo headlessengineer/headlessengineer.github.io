@@ -1,0 +1,119 @@
+.pageHero {
+  min-height: var(--section-min-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--n-950);
+}
+
+:global(body:not(.dark-mode)) .pageHero {
+  --bg: var(--n-950);
+  --fg: var(--white);
+  --fg-secondary: var(--n-300);
+  --fg-muted: var(--n-400);
+  --border: var(--n-700);
+}
+
+.heroContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--sp-4xl) var(--sp-lg);
+}
+
+.eyebrow {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: var(--sp-xs);
+}
+
+.heroTitle {
+  margin-top: var(--sp-sm);
+  margin-bottom: 0;
+  color: var(--fg);
+}
+
+.heroBody {
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  color: var(--fg-secondary);
+  margin-top: var(--sp-lg);
+  margin-bottom: 0;
+}
+
+.howWeWork {
+  min-height: var(--section-min-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hwwContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--sp-4xl) var(--sp-lg);
+}
+
+.panelHeading {
+  margin-top: var(--sp-sm);
+  margin-bottom: 0;
+}
+
+.panelBody {
+  color: var(--fg-secondary);
+  margin-top: var(--sp-md);
+  margin-bottom: 0;
+}
+
+.founderSection {
+  background-color: var(--surface);
+  min-height: var(--section-min-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.founderContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--sp-4xl) var(--sp-lg);
+}
+
+.founderName {
+  font-size: 20px;
+  font-weight: var(--font-weight-bold);
+  color: var(--fg);
+  margin-top: var(--sp-xs);
+}
+
+.founderRole {
+  color: var(--primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: var(--sp-2xs);
+}
+
+.founderBio {
+  color: var(--fg-secondary);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.founderLink {
+  display: inline-block;
+  margin-top: var(--sp-md);
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  transition: opacity var(--dur-fast) var(--ease-out);
+}
+
+.founderLink:hover {
+  opacity: var(--op-subtle);
+}
+

@@ -1,0 +1,22 @@
+.section {
+  min-height: var(--section-min-h);
+  display: flex;
+  align-items: center;
+  background-color: var(--n-950);
+}
+
+:global(body:not(.dark-mode)) .section {
+  --bg: var(--n-950);
+  --fg: var(--white);
+  --fg-secondary: var(--n-300);
+  --fg-muted: var(--n-400);
+  --border: var(--n-700);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--sp-4xl) var(--sp-lg);
+}
+

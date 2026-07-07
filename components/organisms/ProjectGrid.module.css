@@ -1,0 +1,25 @@
+.section {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  background-color: var(--surface);
+}
+
+.sectionFullHeight {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  display: flex;
+  align-items: center;
+  background-color: var(--surface);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--sp-4xl) var(--sp-lg);
+}
+
+.backLink {
+  margin-top: var(--space-8);
+  text-align: center;
+}

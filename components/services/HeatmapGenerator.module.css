@@ -1,0 +1,272 @@
+.root {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .root {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Controls */
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding: var(--space-6);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.label {
+  font-size: var(--font-size-xs);
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: var(--font-weight-bold);
+}
+
+.label::before {
+}
+
+.textarea {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  background: transparent;
+  color: var(--fg);
+  padding: var(--space-3);
+  resize: vertical;
+  outline: none;
+  line-height: var(--line-height-base);
+}
+
+.textarea::placeholder {
+  color: var(--fg-muted);
+}
+
+.charCount {
+  font-size: var(--font-size-xs);
+  color: var(--fg-muted);
+  text-align: right;
+}
+
+.range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  outline: none;
+  cursor: pointer;
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: var(--primary);
+  cursor: pointer;
+}
+
+.range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: var(--primary);
+  border: none;
+  cursor: pointer;
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  color: var(--fg-secondary);
+  transition: color 0.15s linear;
+}
+
+.radioLabel:hover {
+  color: var(--fg);
+}
+
+.radioInput {
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* Color pickers */
+
+.colorRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.colorPicker {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 32px;
+  height: 24px;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.colorPicker::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.colorPicker::-webkit-color-swatch {
+  border: none;
+}
+
+.colorHex {
+  font-size: var(--font-size-xs);
+  color: var(--fg-muted);
+  font-family: var(--font-body);
+}
+
+.levelColors {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.levelColorRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.levelColorLabel {
+  font-size: var(--font-size-xs);
+  color: var(--fg-secondary);
+  width: 44px;
+  flex-shrink: 0;
+}
+
+/* Stats */
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.statValue {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: var(--font-size-xs);
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.meta {
+  font-size: var(--font-size-xs);
+  color: var(--fg-muted);
+  line-height: 1.6;
+  padding-top: var(--space-4);
+}
+
+.meta p {
+  margin: 0 0 var(--space-1);
+}
+
+/* Graph panel */
+
+.graphPanel {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  position: relative;
+}
+
+.versionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.versionLabel {
+  font-size: var(--font-size-xs);
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: var(--font-weight-bold);
+}
+
+.versionLabel::before {
+}
+
+.graphScroll {
+  overflow-x: auto;
+}
+
+.weeksRow {
+  display: flex;
+  align-items: flex-start;
+}
+
+.weekCol {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cells - all visual properties applied via inline styles */
+
+.cell {
+  flex-shrink: 0;
+  cursor: default;
+}
+
+/* Tooltip */
+
+.tooltip {
+  position: absolute;
+  background: var(--bg);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-xs);
+  pointer-events: none;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  white-space: nowrap;
+  color: var(--fg);
+}
+
+.tooltip strong {
+  font-weight: var(--font-weight-bold);
+  color: var(--primary);
+}

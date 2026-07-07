@@ -1,0 +1,4 @@
+.section {
+  width: var(--section-width, 100%);
+  padding: var(--space-8) 0;
+}

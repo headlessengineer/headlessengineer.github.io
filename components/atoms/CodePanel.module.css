@@ -1,0 +1,71 @@
+.codePanel {
+  background: var(--elevated);
+  border-radius: var(--r-lg);
+  padding: var(--sp-lg);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.codePanelHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--sp-md);
+  opacity: var(--op-muted);
+}
+
+.codeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-full);
+  background: var(--fg-muted);
+}
+
+.kw {
+  color: var(--primary);
+}
+
+.fn {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.str {
+  color: var(--fg);
+  font-style: italic;
+}
+
+.cm {
+  color: var(--fg-muted);
+  font-style: italic;
+}
+
+.op {
+  color: var(--fg-secondary);
+}
+
+.typingArea {
+  font-family: var(--font-code);
+  font-size: 14px;
+  line-height: 1.7;
+  white-space: pre;
+  margin: 0;
+  color: var(--fg);
+}
+
+.cursor {
+  display: inline-block;
+  color: var(--primary);
+  font-weight: var(--font-weight-bold);
+  animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; opacity: 1; }
+}

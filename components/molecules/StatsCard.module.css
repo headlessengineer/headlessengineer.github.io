@@ -1,0 +1,25 @@
+.card {
+  padding: var(--space-4);
+  height: auto;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-2) 0;
+}
+
+.statKey {
+  font-weight: 500;
+  color: var(--fg-secondary);
+}
+
+.statVal {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.accent {
+  color: var(--primary);
+}

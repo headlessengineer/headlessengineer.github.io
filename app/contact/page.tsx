@@ -1,0 +1,83 @@
+import type { JSX } from 'react';
+import type { Metadata } from 'next';
+import { getConfig } from '../../lib/config-cache';
+import { CardRows, CardRow } from '../../components/atoms/CardRows';
+import { MethodCard } from '../../components/molecules/MethodCard';
+import { ContactForm } from '../../components/molecules/ContactForm';
+import styles from './contact.module.css';
+
+export function generateMetadata(): Metadata {
+  const { contact } = getConfig();
+  return {
+    title: 'Contact - headlessengineer',
+    description: contact.metadata.description,
+    openGraph: {
+      title: 'Contact - headlessengineer',
+      description: contact.metadata.description,
+    },
+  };
+}
+
+export default function ContactPage(): JSX.Element {
+  const { contact } = getConfig();
+
+  return (
+    <>
+      {contact.sections.hero.visible && (
+        <section aria-labelledby="contact-hero-heading" className={styles.pageHero}>
+          <div className={styles.heroContainer}>
+            <span className={styles.eyebrow}>Contact</span>
+            <h1 id="contact-hero-heading" className={styles.heroTitle}>{contact.title}</h1>
+            <p className={styles.heroBody}>{contact.subtitle}</p>
+          </div>
+        </section>
+      )}
+
+      {contact.sections.methods.visible && (
+        <section aria-labelledby="methods-heading" className={styles.methodsSection}>
+          <div className={styles.methodsContainer}>
+            <h2 id="methods-heading" className="sr-only">Contact Methods</h2>
+            <CardRows>
+              <CardRow cols={2}>
+                {contact.methods.slice(0, 2).map((method) => (
+                  <MethodCard
+                    key={method.title}
+                    title={method.title}
+                    value={method.value}
+                    description={method.description}
+                    href={method.href}
+                  />
+                ))}
+              </CardRow>
+              <CardRow cols={2}>
+                {contact.methods.slice(2, 4).map((method) => (
+                  <MethodCard
+                    key={method.title}
+                    title={method.title}
+                    value={method.value}
+                    description={method.description}
+                    href={method.href}
+                  />
+                ))}
+              </CardRow>
+            </CardRows>
+          </div>
+        </section>
+      )}
+
+      {contact.sections.form.visible && (
+        <section aria-labelledby="form-heading" className={styles.formSection}>
+          <div className={styles.formContainer}>
+            <div className={styles.formHead}>
+              <span className={styles.eyebrow}>Or Write Directly</span>
+              <h2 id="form-heading" className={styles.formTitle}>
+                Tell us what you&apos;re working on
+              </h2>
+            </div>
+            <ContactForm />
+          </div>
+        </section>
+      )}
+    </>
+  );
+}

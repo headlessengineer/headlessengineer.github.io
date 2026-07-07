@@ -1,0 +1,70 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+  background: var(--surface-card);
+  border-radius: var(--r-lg);
+  padding: var(--sp-lg);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+
+.field label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-secondary);
+}
+
+.field input,
+.field textarea {
+  background: var(--surface);
+  color: var(--fg);
+  border: none;
+  border-radius: var(--r-md);
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  transition: background-color var(--dur-fast) var(--ease-out);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--fg-muted);
+}
+
+.field input:focus-visible,
+.field textarea:focus-visible {
+  background: var(--elevated);
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.fieldError {
+  font-size: var(--font-size-xs);
+  color: var(--fg);
+}
+
+.formError {
+  font-size: var(--font-size-sm);
+  color: var(--fg);
+}
+
+.submitBtn {
+  align-self: flex-start;
+}
+
+.successMessage {
+  font-size: var(--font-size-lg);
+  color: var(--fg-secondary);
+}

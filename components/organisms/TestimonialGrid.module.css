@@ -1,0 +1,42 @@
+.section {
+  min-height: var(--section-min-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sectionFullHeight {
+  min-height: var(--section-min-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--sp-4xl) var(--sp-lg);
+}
+
+.backLink {
+  margin-top: var(--space-8);
+  text-align: center;
+}
+
+.backLink a {
+  color: var(--fg);
+  text-decoration: none;
+  font-family: var(--font-body);
+  text-transform: uppercase;
+  transition: color 0.15s linear;
+}
+
+.backLink a::before {
+}
+
+.backLink a::after {
+}
+
+.backLink a:hover {
+  color: var(--primary);
+}

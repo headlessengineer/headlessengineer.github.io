@@ -1,0 +1,16 @@
+.tag {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-secondary);
+  background-color: var(--bg);
+  border-radius: var(--r-sm);
+  padding: var(--space-1) var(--space-2);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.tag[href]:hover {
+  color: var(--primary);
+}

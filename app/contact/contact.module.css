@@ -1,0 +1,82 @@
+.pageHero {
+  min-height: var(--section-min-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--n-950);
+}
+
+:global(body:not(.dark-mode)) .pageHero {
+  --bg: var(--n-950);
+  --fg: var(--white);
+  --fg-secondary: var(--n-300);
+  --fg-muted: var(--n-400);
+  --border: var(--n-700);
+}
+
+.heroContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--sp-4xl) var(--sp-lg);
+}
+
+.eyebrow {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: var(--sp-xs);
+}
+
+.heroTitle {
+  margin-top: var(--sp-sm);
+  margin-bottom: 0;
+  color: var(--fg);
+}
+
+.heroBody {
+  font-size: var(--font-size-lg);
+  line-height: 1.6;
+  color: var(--fg-secondary);
+  margin-top: var(--sp-lg);
+  margin-bottom: 0;
+}
+
+.methodsSection {
+  background: var(--surface);
+  min-height: var(--section-min-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.methodsContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--sp-4xl) var(--sp-lg);
+}
+
+.formSection {
+  min-height: var(--section-min-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.formContainer {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--sp-4xl) var(--sp-lg);
+}
+
+.formHead {
+  margin-bottom: var(--sp-2xl);
+}
+
+.formTitle {
+  margin-top: var(--sp-sm);
+  margin-bottom: 0;
+}
+

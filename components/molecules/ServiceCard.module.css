@@ -1,0 +1,54 @@
+.card {
+  background: var(--surface-card);
+  border-radius: var(--r-lg);
+  padding: var(--sp-lg);
+  box-shadow: 0 4px 24px rgba(0, 153, 153, 0);
+  transition:
+    box-shadow var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.card:hover {
+  box-shadow: 0 4px 24px rgba(0, 153, 153, 0.18);
+  transform: translateY(-2px);
+}
+
+.title {
+  margin: var(--sp-sm) 0;
+}
+
+.description {
+  color: var(--fg-secondary);
+}
+
+/* 13px has no design token - matches HTML reference exactly */
+.value {
+  color: var(--fg-muted);
+  font-size: 13px;
+  margin-top: var(--sp-sm);
+  display: block;
+}
+
+/* 13px has no design token - matches HTML reference exactly */
+.engagement {
+  color: var(--fg-secondary);
+  font-size: 13px;
+  margin-top: var(--sp-sm);
+  display: block;
+}
+
+.engagement strong {
+  color: var(--fg);
+}
+
+/* gap: 6px has no design token - matches HTML reference exactly */
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--sp-md);
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}

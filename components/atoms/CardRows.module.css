@@ -1,0 +1,35 @@
+.cardRows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+}
+
+.cardRow {
+  display: grid;
+  gap: var(--sp-lg);
+}
+
+.cols1 {
+  grid-template-columns: 1fr;
+}
+
+.cols2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.cols3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .cols3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .cols2,
+  .cols3 {
+    grid-template-columns: 1fr;
+  }
+}

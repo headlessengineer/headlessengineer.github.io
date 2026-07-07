@@ -1,0 +1,41 @@
+.filterRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+  margin-bottom: var(--sp-2xl);
+}
+
+.chip {
+  background: var(--elevated);
+  color: var(--fg-secondary);
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--r-full);
+  transition: background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.chip:hover {
+  color: var(--fg);
+}
+
+/* W1/C1: use --fg for focus ring so it contrasts against both elevated and primary backgrounds */
+.chip:focus-visible {
+  outline-color: var(--fg);
+}
+
+.chipActive {
+  background: var(--primary);
+  color: var(--on-primary);
+  /* W2: non-colour active indicator for WCAG SC 1.4.1 */
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

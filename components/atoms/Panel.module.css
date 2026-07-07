@@ -1,0 +1,18 @@
+.panel {
+  background: var(--surface-card);
+  border-radius: var(--r-xl);
+  padding: var(--sp-3xl);
+}
+
+.panelGrid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: var(--sp-2xl);
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .panelGrid {
+    grid-template-columns: 1fr;
+  }
+}

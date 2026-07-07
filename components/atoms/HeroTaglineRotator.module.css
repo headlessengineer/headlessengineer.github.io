@@ -1,0 +1,26 @@
+.rotator {
+  height: 24px;
+  overflow: hidden;
+  margin: var(--sp-md) 0;
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--dur-slower) var(--ease-spring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    transition: none;
+  }
+}
+
+.tagline {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  color: var(--primary);
+}

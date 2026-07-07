@@ -1,0 +1,33 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--fg);
+  background-color: var(--surface-card);
+  border-radius: var(--r-lg);
+  padding: var(--space-6);
+  min-width: 0;
+  overflow-wrap: break-word;
+  height: 100%;
+  box-shadow: 0 4px 24px rgba(0, 153, 153, 0);
+  transition:
+    box-shadow var(--duration-fast) var(--ease-out),
+    transform var(--duration-fast) var(--ease-out);
+}
+
+.card:hover {
+  box-shadow: 0 4px 24px rgba(0, 153, 153, 0.18);
+  transform: translateY(-2px);
+}
+
+.card[data-title]::before {
+  content: attr(data-title);
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: var(--space-3);
+}

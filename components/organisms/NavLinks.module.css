@@ -1,0 +1,21 @@
+.navLink {
+  color: var(--fg-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color var(--dur-fast) var(--ease-out);
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.navLink:hover {
+  color: var(--primary);
+}
+
+.navLinkActive {
+  color: var(--primary);
+  font-weight: 700;
+}
