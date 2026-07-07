@@ -11,6 +11,11 @@ const css = readFileSync(
   'utf-8',
 );
 
+const pageHeroCss = readFileSync(
+  join(process.cwd(), 'components/organisms/PageHero.module.css'),
+  'utf-8',
+);
+
 vi.mock('next/link', () => ({
   default: function MockLink({
     href,
@@ -66,7 +71,7 @@ describe('ContactPage - SPEC-021 acceptance criteria', () => {
   });
 
   it('AC1: CSS uses var(--font-size-lg) for hero body', () => {
-    expect(css).toContain('var(--font-size-lg)');
+    expect(pageHeroCss).toContain('var(--font-size-lg)');
   });
 
   // ── AC2: method cards as <a> links ────────────────────────────────────
@@ -138,7 +143,7 @@ describe('ContactPage - SPEC-021 acceptance criteria', () => {
   });
 
   it('CSS: mobile media query at 768px', () => {
-    expect(css).toMatch(/@media[^{]*max-width[^{]*768px/);
+    expect(pageHeroCss).toMatch(/@media[^{]*max-width[^{]*768px/);
   });
 
   it('CSS: form container max-width 640px', () => {

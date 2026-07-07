@@ -2,7 +2,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  text-decoration: none;
   color: var(--fg);
   background-color: var(--surface-card);
   border-radius: var(--r-lg);

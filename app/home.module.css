@@ -9,11 +9,11 @@
 .testimonialsContainer {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--sp-4xl) var(--sp-lg);
 }
 
 .testimonialsSectionHead {
   max-width: 640px;
+  padding: var(--sp-4xl) var(--sp-lg) 0;
   margin-bottom: var(--sp-2xl);
 }
 

@@ -11,6 +11,11 @@ const css = readFileSync(
   'utf-8',
 );
 
+const pageHeroCss = readFileSync(
+  join(process.cwd(), 'components/organisms/PageHero.module.css'),
+  'utf-8',
+);
+
 vi.mock('next/link', () => ({
   default: function MockLink({
     href,
@@ -160,6 +165,6 @@ describe('ServicesPage - SPEC-020 acceptance criteria', () => {
   });
 
   it('CSS: mobile media query at 768px', () => {
-    expect(css).toMatch(/@media[^{]*max-width[^{]*768px/);
+    expect(pageHeroCss).toMatch(/@media[^{]*max-width[^{]*768px/);
   });
 });

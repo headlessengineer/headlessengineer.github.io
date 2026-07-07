@@ -3,7 +3,6 @@
   align-items: baseline;
   gap: 0;
   white-space: nowrap;
-  text-decoration: none;
   font-family: var(--font-wordmark, 'Bitcount Grid Double', sans-serif);
   font-size: 28px;
   font-weight: 400;

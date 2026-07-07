@@ -5,6 +5,7 @@ import { FilterableOfferings } from '../../components/molecules/FilterableOfferi
 import type { Offering } from '../../components/molecules/FilterableOfferings';
 import { CTABand } from '../../components/molecules/CTABand';
 import type { FilterChip } from '../../components/molecules/FilterChips';
+import { PageHero } from '../../components/organisms/PageHero';
 import styles from './services.module.css';
 
 export function generateMetadata(): Metadata {
@@ -42,13 +43,12 @@ export default function ServicesPage(): JSX.Element {
   return (
     <>
       {services.sections.hero.visible && (
-        <section className={styles.pageHero} aria-labelledby="services-hero-heading">
-          <div className={styles.heroContainer}>
-            <span className={styles.eyebrow}>Services</span>
-            <h1 id="services-hero-heading" className={styles.heroTitle}>{services.hero.title}</h1>
-            <p className={styles.heroBody}>{services.hero.description}</p>
-          </div>
-        </section>
+        <PageHero
+          eyebrow="Services"
+          title={services.hero.title}
+          description={services.hero.description}
+          headingId="services-hero-heading"
+        />
       )}
 
       {services.sections.offerings.visible && (

@@ -4,6 +4,7 @@ import { getConfig } from '../../lib/config-cache';
 import { CardRows, CardRow } from '../../components/atoms/CardRows';
 import { MethodCard } from '../../components/molecules/MethodCard';
 import { ContactForm } from '../../components/molecules/ContactForm';
+import { PageHero } from '../../components/organisms/PageHero';
 import styles from './contact.module.css';
 
 export function generateMetadata(): Metadata {
@@ -24,13 +25,12 @@ export default function ContactPage(): JSX.Element {
   return (
     <>
       {contact.sections.hero.visible && (
-        <section aria-labelledby="contact-hero-heading" className={styles.pageHero}>
-          <div className={styles.heroContainer}>
-            <span className={styles.eyebrow}>Contact</span>
-            <h1 id="contact-hero-heading" className={styles.heroTitle}>{contact.title}</h1>
-            <p className={styles.heroBody}>{contact.subtitle}</p>
-          </div>
-        </section>
+        <PageHero
+          eyebrow="Contact"
+          title={contact.title}
+          description={contact.subtitle}
+          headingId="contact-hero-heading"
+        />
       )}
 
       {contact.sections.methods.visible && (

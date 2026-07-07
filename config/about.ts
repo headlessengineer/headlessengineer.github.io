@@ -4,7 +4,7 @@ export const aboutConfig = {
   sections: {
     hero:         { visible: true },
     coreServices: { visible: true },
-    howWeWork:    { visible: true },
+    howWeWork:    { visible: false },
     expertise:    { visible: true },
     principles:   { visible: true },
     founder:      { visible: false },
@@ -167,7 +167,7 @@ export const aboutConfig = {
     name: 'Karan Popat',
     role: 'Founder & Lead Architect',
     bio: 'Karan has spent 12+ years building enterprise platforms - from greenfield commerce backends to distributed Go microservices running across 26 countries - and currently leads engineering teams of 9–15 at Accenture Song. He founded headlessengineer to bring that depth directly to businesses, and to build a consultancy that isn\'t bounded by any one person\'s stack: a core of senior architectural judgment, backed by a growing network of specialist engineers brought in as each engagement requires.',
-    href: 'https://linkedin.com/in/popatkaran',
+    href: 'https://linkedin.com/in/headlessengineer',
   },
 
   certifications: {

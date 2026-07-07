@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { getConfig } from '../../lib/config-cache';
 import { getAllProjects } from '../../lib/projects';
-import { PageHeader } from '../../components/molecules/PageHeader';
+import { PageHero } from '../../components/organisms/PageHero';
 import { ProjectGrid } from '../../components/organisms/ProjectGrid';
+import { Button } from '../../components/atoms/Button';
 import styles from './work.module.css';
 
 export function generateMetadata(): Metadata {
@@ -24,22 +24,21 @@ export default function WorkPage() {
 
   return (
     <>
-      <section className={styles.pageHero}>
-        <div className={styles.heroContainer}>
-          <PageHeader
-            category={{ name: 'Work', href: '/work' }}
-            title="Selected Work"
-            description={cfg.hero.description}
-          />
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Work"
+        title="Selected Work"
+        description={cfg.hero.description}
+      />
       {page.length > 0 ? (
         <ProjectGrid projects={page} currentPage={1} totalPages={totalPages} basePath="/work/page" />
       ) : (
-        <p>
-          No projects yet.{' '}
-          <Link href="/contact">Get in contact</Link>
-        </p>
+        <section className={styles.emptyState}>
+          <div className={styles.emptyContainer}>
+            <p className={styles.emptyHeading}>No projects yet</p>
+            <p className={styles.emptyBody}>Case studies and open-source work coming soon.</p>
+            <Button href="/contact">Get in contact</Button>
+          </div>
+        </section>
       )}
     </>
   );

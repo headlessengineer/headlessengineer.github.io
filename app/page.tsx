@@ -51,7 +51,7 @@ export default function HomePage(): JSX.Element {
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
       {home.sections.hero.visible && <Hero hero={home.hero} availability={site.availability} />}
-      {about.metrics.length > 0 && <MetricsStrip metrics={about.metrics} />}
+      {home.sections.metrics.visible && about.metrics.length > 0 && <MetricsStrip metrics={about.metrics} />}
       {home.sections.services.visible && <HomeServices coreServices={about.coreServices} />}
       <TechMarquee />
       {home.sections.testimonials.visible && testimonials.items.length > 0 && (

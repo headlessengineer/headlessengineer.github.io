@@ -34,17 +34,17 @@ export const siteConfig: SiteConfig = {
 
   social: {
     github: 'https://github.com/headlessengineer',
-    linkedin: 'https://linkedin.com/in/popatkaran',
+    linkedin: 'https://linkedin.com/in/headlessengineer',
     twitter: '@headlessengineer',
   },
 
   navigation: [
-    { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
-    { label: 'Services', href: '/services' },
-    { label: 'Work', href: '/work' },
-    { label: 'Writing', href: '/articles' },
-    { label: 'Contact', href: '/contact' },
+    { label: 'Home', href: '/', enabled: true },
+    { label: 'About', href: '/about', enabled: true },
+    { label: 'Services', href: '/services', enabled: true },
+    { label: 'Work', href: '/work', enabled: false },
+    { label: 'Writing', href: '/articles', enabled: false },
+    { label: 'Contact', href: '/contact', enabled: true },
   ],
 
   scheduleCallUrl: 'https://calendar.app.google/VDfc1ju38MvMMucKA',

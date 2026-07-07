@@ -93,9 +93,7 @@ describe('WorkPage - SPEC-022 acceptance criteria', () => {
   // AC-2: PageHero with eyebrow, h1 "Selected Work", description
   it('AC-2: renders eyebrow "Work"', () => {
     render(<WorkPage />);
-    // PageHeader renders the category name as a link inside <header>
-    const header = screen.getByRole('banner');
-    expect(header.textContent).toContain('Work');
+    expect(screen.getByText('Work', { selector: 'span' })).toBeInTheDocument();
   });
 
   it('AC-2: renders h1 "Selected Work"', () => {

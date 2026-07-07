@@ -12,6 +12,8 @@ interface HeaderProps {
 }
 
 export function Header({ site }: HeaderProps) {
+  const enabledNav = site.navigation.filter((item) => item.enabled);
+
   return (
     <>
       <SkipLink />
@@ -20,14 +22,14 @@ export function Header({ site }: HeaderProps) {
           <Logo />
           <nav className={styles.desktopNav} aria-label="Main navigation">
             <ul className={styles.navLinks}>
-              <NavLinks items={site.navigation} />
+              <NavLinks items={enabledNav} />
             </ul>
           </nav>
           <div className={styles.navRight}>
             <ThemeSwitcher />
             <ScrollNavCta />
             <OffcanvasNav
-              items={site.navigation}
+              items={enabledNav}
               ctaHref="/contact"
               ctaLabel="Talk to Us"
             />

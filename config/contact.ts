@@ -28,9 +28,9 @@ export const contactConfig = {
     },
     {
       title: 'LinkedIn',
-      value: 'linkedin.com/in/popatkaran',
+      value: 'linkedin.com/in/headlessengineer',
       description: 'Connect on LinkedIn',
-      href: 'https://linkedin.com/in/popatkaran',
+      href: 'https://linkedin.com/in/headlessengineer',
     },
     {
       title: 'GitHub',

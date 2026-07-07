@@ -7,19 +7,19 @@ describe('siteConfig - SPEC-001 acceptance criteria', () => {
     expect(siteConfig.tagline).toBe('Engineered for the problem.');
   });
 
-  it('AC-3: navigation has exactly 6 items with correct labels and hrefs in order', () => {
+  it('AC-3: navigation has exactly 6 items with correct labels, hrefs, and enabled flags in order', () => {
     expect(siteConfig.navigation).toEqual([
-      { label: 'Home', href: '/' },
-      { label: 'About', href: '/about' },
-      { label: 'Services', href: '/services' },
-      { label: 'Work', href: '/work' },
-      { label: 'Writing', href: '/articles' },
-      { label: 'Contact', href: '/contact' },
+      { label: 'Home', href: '/', enabled: true },
+      { label: 'About', href: '/about', enabled: true },
+      { label: 'Services', href: '/services', enabled: true },
+      { label: 'Work', href: '/work', enabled: false },
+      { label: 'Writing', href: '/articles', enabled: false },
+      { label: 'Contact', href: '/contact', enabled: true },
     ]);
   });
 
   it('AC-4a: LinkedIn social link matches site.json', () => {
-    expect(siteConfig.social.linkedin).toBe('https://linkedin.com/in/popatkaran');
+    expect(siteConfig.social.linkedin).toBe('https://linkedin.com/in/headlessengineer');
   });
 
   it('AC-4b: GitHub social link matches site.json', () => {

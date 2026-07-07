@@ -1,7 +1,6 @@
 .card {
   display: block;
   text-align: left;
-  text-decoration: none;
   color: inherit;
   background: var(--surface-card);
   border-radius: var(--r-lg);

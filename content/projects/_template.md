@@ -33,7 +33,7 @@ stats:
 # Remove the entire links block if no public URLs exist.
 # Individual keys are all optional — only include what exists.
 links:
-  github: 'https://github.com/popatkaran/project-name'
+  github: 'https://github.com/headlessengineer/project-name'
   demo: 'https://demo.project-name.dev'
   docs: 'https://docs.project-name.dev'
   # npm: 'https://www.npmjs.com/package/project-name'

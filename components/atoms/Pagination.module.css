@@ -15,7 +15,6 @@
 
 .link {
   color: var(--fg);
-  text-decoration: none;
   padding: var(--space-3) var(--space-4);
   min-width: var(--size-touch);
   min-height: var(--size-touch);

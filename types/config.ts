@@ -12,7 +12,7 @@ export interface SiteConfig {
   author: { name: string; role: string; email: string };
   keywords: string[];
   social: { github?: string; linkedin?: string; twitter?: string };
-  navigation: { label: string; href: string }[];
+  navigation: { label: string; href: string; enabled: boolean }[];
   scheduleCallUrl: string;
   location: string;
   availability?: { open: boolean; label: string };

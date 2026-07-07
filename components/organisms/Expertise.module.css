@@ -27,10 +27,10 @@
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--sp-4xl) var(--sp-lg);
 }
 
 .sectionHead {
+  padding: var(--sp-4xl) var(--sp-lg) 0;
   margin-bottom: var(--sp-2xl);
 }
 
@@ -50,8 +50,8 @@
 }
 
 @media (max-width: 768px) {
-  .container {
-    padding: var(--sp-3xl) var(--sp-md);
+  .sectionHead {
+    padding: var(--sp-3xl) var(--sp-md) 0;
   }
 }
 

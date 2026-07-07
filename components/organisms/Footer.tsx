@@ -9,8 +9,8 @@ interface FooterProps {
 const STUDIO_HREFS = ['/about', '/services', '/projects', '/articles'];
 
 export function Footer({ site }: FooterProps): React.JSX.Element {
-  const studioLinks = site.navigation.filter((item) =>
-    STUDIO_HREFS.includes(item.href),
+  const studioLinks = site.navigation.filter(
+    (item) => item.enabled && STUDIO_HREFS.includes(item.href),
   );
 
   return (

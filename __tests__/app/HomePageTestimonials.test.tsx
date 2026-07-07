@@ -39,6 +39,7 @@ vi.mock('../../components/molecules/TestimonialCard', () => ({
 const MOCK_HOME: HomeConfig = {
   sections: {
     hero:         { visible: true },
+    metrics:      { visible: false },
     services:     { visible: true },
     testimonials: { visible: true },
     cta:          { visible: true },

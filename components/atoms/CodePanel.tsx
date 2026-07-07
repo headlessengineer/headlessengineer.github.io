@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { JSX } from 'react';
 import { useTypingAnimation } from '../../lib/useTypingAnimation';
 import styles from './CodePanel.module.css';
@@ -12,11 +12,11 @@ const CODE = `const engagement = {
 };`;
 
 export function CodePanel(): JSX.Element {
-  const [active] = useState(
-    () =>
-      typeof window !== 'undefined' &&
-      !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-  );
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    setActive(!window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  }, []);
 
   const { visibleText } = useTypingAnimation(active ? CODE : '', 28);
   const displayText = active ? visibleText : CODE;

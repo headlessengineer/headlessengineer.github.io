@@ -14,14 +14,20 @@ export function NavLinks({ items }: NavLinksProps) {
   return (
     <>
       {items.map((item) => {
+        const isExternal = item.href.startsWith('http');
         const isActive =
-          item.href === '/' ? pathname === '/' : pathname.startsWith(item.href);
+          isExternal
+            ? false
+            : item.href === '/'
+              ? pathname === '/'
+              : pathname.startsWith(item.href);
         return (
           <li key={item.href}>
             <Link
               href={item.href}
               className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
               aria-current={isActive ? 'page' : undefined}
+              {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             >
               {item.label}
             </Link>

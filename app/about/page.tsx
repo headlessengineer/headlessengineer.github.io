@@ -9,6 +9,7 @@ import { Principles } from '../../components/organisms/Principles';
 import { Certifications } from '../../components/organisms/Certifications';
 import { CTA } from '../../components/organisms/CTA';
 import { Panel } from '../../components/atoms/Panel';
+import { PageHero } from '../../components/organisms/PageHero';
 import styles from './about.module.css';
 
 export function generateMetadata(): Metadata {
@@ -29,13 +30,11 @@ export default function AboutPage(): JSX.Element {
   return (
     <>
       {about.sections.hero.visible && (
-        <section className={styles.pageHero}>
-          <div className={styles.heroContainer}>
-            <span className={styles.eyebrow}>About</span>
-            <h1 className={styles.heroTitle}>{about.hero.title}</h1>
-            <p className={styles.heroBody}>{about.hero.subtitle}</p>
-          </div>
-        </section>
+        <PageHero
+          eyebrow="About"
+          title={about.hero.title}
+          description={about.hero.subtitle}
+        />
       )}
 
       {about.sections.coreServices.visible && <CoreServices coreServices={about.coreServices} />}

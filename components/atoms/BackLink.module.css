@@ -3,7 +3,6 @@
   margin-top: var(--space-8);
   padding-top: var(--space-4);
   color: var(--fg);
-  text-decoration: none;
   font-family: var(--font-body);
   text-transform: uppercase;
   transition: color var(--duration-fast) var(--ease-out);

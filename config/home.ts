@@ -3,8 +3,9 @@ import type { HomeConfig } from '../types/config';
 export const homeConfig = {
   sections: {
     hero:         { visible: true },
+    metrics:      { visible: false },
     services:     { visible: true },
-    testimonials: { visible: true },
+    testimonials: { visible: false },
     cta:          { visible: true },
   },
   metadata: {
