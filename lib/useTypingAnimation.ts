@@ -6,10 +6,12 @@ export function useTypingAnimation(
   intervalMs = 28,
 ): { visibleText: string; isComplete: boolean } {
   const [index, setIndex] = useState(0);
+  const [prevText, setPrevText] = useState(text);
 
-  useEffect(() => {
+  if (prevText !== text) {
+    setPrevText(text);
     setIndex(0);
-  }, [text]);
+  }
 
   useEffect(() => {
     if (index >= text.length) return;

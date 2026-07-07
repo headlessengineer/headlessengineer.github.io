@@ -11,9 +11,9 @@ export function ScrollNavCta(): JSX.Element {
   useEffect(() => {
     const heading = document.getElementById('hero-heading');
     if (!heading) {
-      // No hero on this page — CTA always visible
-      setVisible(true);
-      return;
+      // No hero on this page — CTA always visible; defer to avoid sync setState in effect
+      const id = setTimeout(() => setVisible(true), 0);
+      return () => clearTimeout(id);
     }
 
     const observer = new IntersectionObserver(

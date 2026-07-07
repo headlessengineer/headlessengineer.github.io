@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getConfig } from '../../../../lib/config-cache';
 import { getAllProjects, getProjectsByCategory } from '../../../../lib/projects';
 import { Section } from '../../../../components/atoms/Section';
 import { ProjectGrid } from '../../../../components/organisms/ProjectGrid';
@@ -27,8 +26,6 @@ export default async function ProjectsByCategoryPage({ params }: { params: Promi
   const category = slug[0];
   const projects = getProjectsByCategory(category);
   if (projects.length === 0) notFound();
-
-  const { projects: cfg } = getConfig();
 
   return (
     <Section>

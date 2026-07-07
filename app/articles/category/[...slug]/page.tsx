@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getConfig } from '../../../../lib/config-cache';
 import { getAllArticles, getArticlesByCategory } from '../../../../lib/articles';
 import { Section } from '../../../../components/atoms/Section';
 import { ArticleGrid } from '../../../../components/organisms/ArticleGrid';
@@ -27,8 +26,6 @@ export default async function ArticlesByCategoryPage({ params }: { params: Promi
   const category = slug[0];
   const articles = getArticlesByCategory(category);
   if (articles.length === 0) notFound();
-
-  const { articles: cfg } = getConfig();
 
   return (
     <Section>

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getConfig } from '../../../../lib/config-cache';
 import { getAllArticles, getArticlesByTag } from '../../../../lib/articles';
 import { Section } from '../../../../components/atoms/Section';
 import { ArticleGrid } from '../../../../components/organisms/ArticleGrid';
@@ -27,8 +26,6 @@ export default async function ArticlesByTagPage({ params }: { params: Promise<{ 
   const tag = slug[0];
   const articles = getArticlesByTag(tag);
   if (articles.length === 0) notFound();
-
-  const { articles: cfg } = getConfig();
 
   return (
     <Section>
