@@ -9,7 +9,9 @@ import { StatsGrid } from '../../../components/organisms/StatsGrid';
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  return getAllProjects().map((p) => ({ slug: p.slug }));
+  const projects = getAllProjects();
+  if (projects.length === 0) return [{ slug: '_placeholder' }];
+  return projects.map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {

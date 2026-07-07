@@ -43,7 +43,7 @@ links:
 # featured: true — pins the project to the top of the list
 featured: false
 # published: false — hides the project from all lists and routes
-published: true
+published: false
 
 # ── SEO ─────────────────────────────────────────────────────────────────────
 seo:

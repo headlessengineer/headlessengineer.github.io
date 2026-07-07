@@ -11,6 +11,9 @@ export async function generateStaticParams() {
   const cfg = getConfig();
   const total = getAllTestimonials().length;
   const totalPages = Math.ceil(total / cfg.testimonials.itemsPerPage);
+  // Must return at least one entry for output: export to accept a dynamic route.
+  // The page component calls notFound() for params that exceed the real page count.
+  if (totalPages <= 1) return [{ page: '2' }];
   return Array.from({ length: totalPages - 1 }, (_, i) => ({ page: String(i + 2) }));
 }
 

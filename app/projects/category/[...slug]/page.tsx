@@ -9,6 +9,7 @@ export const dynamicParams = false;
 export async function generateStaticParams() {
   const projects = getAllProjects();
   const categories = [...new Set(projects.map((p) => p.category))];
+  if (categories.length === 0) return [{ slug: ['_placeholder'] }];
   return categories.map((cat) => ({ slug: [cat] }));
 }
 

@@ -1,16 +1,10 @@
 import { ImageResponse } from 'next/og';
-import { readFileSync } from 'fs';
-import { join } from 'path';
 
 export const dynamic = 'force-static';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default function OgImage() {
-  const fontData = readFileSync(
-    join(process.cwd(), 'public/fonts/BitcountGridDouble-Regular.ttf')
-  );
-
   return new ImageResponse(
     (
       <div
@@ -82,15 +76,6 @@ export default function OgImage() {
         </div>
       </div>
     ),
-    {
-      ...size,
-      fonts: [
-        {
-          name: 'Bitcount',
-          data: fontData,
-          weight: 400,
-        },
-      ],
-    }
+    { ...size }
   );
 }

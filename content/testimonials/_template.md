@@ -12,7 +12,7 @@ company: 'Company Name'
 # ISO 8601 date string.
 publishedAt: '2025-01-01'
 # published: false — hides this testimonial from all lists and renders.
-published: true
+published: false
 ---
 
 Full testimonial text. Write in the first person from the client's perspective.
