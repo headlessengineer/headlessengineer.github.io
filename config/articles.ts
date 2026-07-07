@@ -6,7 +6,7 @@ export const articlesConfig: ArticlesConfig = {
     detail: { visible: true },
   },
   metadata: {
-    title: 'Writing - headlessengineer',
+    title: 'Writing - HeadlessEngineer',
     description: 'Notes on e-commerce architecture, distributed systems, and production AI engineering.',
   },
   hero: {

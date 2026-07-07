@@ -23,7 +23,7 @@ export function Footer({ site }: FooterProps): React.JSX.Element {
               href="/"
               className={styles.wordmark}
               style={{ fontSize: '22px' }}
-              aria-label="headlessengineer - home"
+              aria-label="HeadlessEngineer, home"
             >
               <span className={styles.wordHead}>HEADLESS</span>
               <span className={styles.wordTail}>ENGINEER</span>
@@ -98,7 +98,7 @@ export function Footer({ site }: FooterProps): React.JSX.Element {
         {/* Bottom bar */}
         <div className={styles.bottom}>
           <span className={styles.bottomText}>
-            &copy; {new Date().getFullYear()} headlessengineer. All rights reserved.
+            &copy; {new Date().getFullYear()} HeadlessEngineer. All rights reserved.
           </span>
           <span className={styles.bottomText}>
             Founded by {site.author.name}

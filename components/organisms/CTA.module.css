@@ -20,3 +20,9 @@
   padding: var(--sp-4xl) var(--sp-lg);
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: var(--sp-3xl) var(--sp-lg);
+  }
+}
+

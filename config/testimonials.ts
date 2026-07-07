@@ -5,7 +5,7 @@ export const testimonialsConfig: TestimonialsConfig = {
     list: { visible: true },
   },
   metadata: {
-    title: 'Testimonials - headlessengineer',
+    title: 'Testimonials - HeadlessEngineer',
     description: "What it's like to work with the studio.",
   },
   hero: {

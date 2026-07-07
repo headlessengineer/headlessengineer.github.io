@@ -15,9 +15,15 @@
 }
 
 .heroContainer {
-  max-width: var(--max-width);
+  max-width: 760px;
   margin: 0 auto;
   padding: var(--sp-4xl) var(--sp-lg);
+}
+
+@media (max-width: 768px) {
+  .heroContainer {
+    padding: var(--sp-3xl) var(--sp-lg);
+  }
 }
 
 .eyebrow {

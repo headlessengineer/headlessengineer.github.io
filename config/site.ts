@@ -1,7 +1,7 @@
 import type { SiteConfig } from '../types/config';
 
 export const siteConfig: SiteConfig = {
-  name: 'headlessengineer',
+  name: 'HeadlessEngineer',
 
   tagline: 'Enterprise e-commerce backends. Production AI workflows. No theatre.',
 

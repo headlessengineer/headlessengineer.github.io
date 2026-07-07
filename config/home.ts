@@ -8,7 +8,7 @@ export const homeConfig = {
     cta:          { visible: true },
   },
   metadata: {
-    title: 'headlessengineer - Technology Consultancy for Hard Business Problems',
+    title: 'HeadlessEngineer - Technology Consultancy for Hard Business Problems',
     description:
       'headlessengineer is a technology consultancy that solves business problems with the right technology - software engineering, solution architecture, enterprise architecture, and AI.',
   },

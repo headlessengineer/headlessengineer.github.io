@@ -8,7 +8,7 @@ interface LogoProps {
 export function Logo({ className }: LogoProps): React.JSX.Element {
   const linkClass = [styles.wordmark, className].filter(Boolean).join(' ');
   return (
-    <Link href="/" className={linkClass} aria-label="headlessengineer - home">
+    <Link href="/" className={linkClass} aria-label="HeadlessEngineer, home">
       <span className={styles.wordHead}>HEADLESS</span>
       <span className={styles.wordTail}>
         <span className={styles.swapA}>ENGINEER</span>

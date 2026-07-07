@@ -15,7 +15,7 @@
 }
 
 .heroContainer {
-  max-width: var(--max-width);
+  max-width: 860px;
   margin: 0 auto;
   padding: var(--sp-4xl) var(--sp-lg);
 }
