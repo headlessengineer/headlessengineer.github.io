@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
 import type { JSX } from 'react';
 import { useTypingAnimation } from '../../lib/useTypingAnimation';
 import styles from './CodePanel.module.css';
@@ -11,12 +11,18 @@ const CODE = `const engagement = {
   // core architect + specialist network
 };`;
 
-export function CodePanel(): JSX.Element {
-  const [active, setActive] = useState(false);
+function subscribe(onChange: () => void): () => void {
+  const mql = window.matchMedia('(prefers-reduced-motion: reduce)');
+  mql.addEventListener('change', onChange);
+  return () => mql.removeEventListener('change', onChange);
+}
 
-  useEffect(() => {
-    setActive(!window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  }, []);
+function getSnapshot(): boolean {
+  return !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+export function CodePanel(): JSX.Element {
+  const active = useSyncExternalStore(subscribe, getSnapshot, () => false);
 
   const { visibleText } = useTypingAnimation(active ? CODE : '', 28);
   const displayText = active ? visibleText : CODE;
