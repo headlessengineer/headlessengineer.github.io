@@ -1,8 +1,6 @@
 .header {
   position: sticky;
   top: 0;
-  /* z-drawer creates a stacking context; OffcanvasNav panel/backdrop are scoped
-     within it. Works for this site - see ADR if a competing z-index > 100 appears. */
   z-index: var(--z-drawer);
   height: var(--header-height);
   background: var(--bg);
@@ -20,31 +18,8 @@
   width: 100%;
 }
 
-/* Desktop nav */
-.desktopNav {
-  display: flex;
-  align-items: center;
-}
-
-.navLinks {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-lg);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* Right side: theme toggle + CTA + hamburger */
 .navRight {
   display: flex;
   align-items: center;
   gap: var(--sp-sm);
-}
-
-/* Hide desktop nav on mobile */
-@media (max-width: 768px) {
-  .desktopNav {
-    display: none;
-  }
 }

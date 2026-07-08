@@ -39,12 +39,12 @@ const CSS_PATH = join(
 );
 
 describe('Footer - SPEC-007 acceptance criteria', () => {
-  // ── AC-1: 4-column grid structure ─────────────────────────────────────────
-  it('AC-1: renders 4 direct children in the grid container', () => {
+  // ── AC-1: 3-column grid structure ─────────────────────────────────────────
+  it('AC-1: renders 3 direct children in the grid container', () => {
     render(<Footer site={mockSite} />);
     const grid = document.querySelector('[data-testid="footer-grid"]');
     expect(grid).not.toBeNull();
-    expect(grid!.children).toHaveLength(4);
+    expect(grid!.children).toHaveLength(3);
   });
 
   // ── AC-4: Brand column - wordmark + tagline ────────────────────────────────
@@ -72,10 +72,11 @@ describe('Footer - SPEC-007 acceptance criteria', () => {
   });
 
   // ── AC-5: Connect column links ─────────────────────────────────────────────
-  it('AC-5: email link uses mailto href', () => {
+  it('AC-5: contact link points to /contact page', () => {
     render(<Footer site={mockSite} />);
-    const link = document.querySelector('a[href="mailto:contact@headlessengineer.xyz"]');
-    expect(link).not.toBeNull();
+    const links = screen.getAllByRole('link', { name: /contact/i });
+    const contactPageLink = links.find((l) => l.getAttribute('href') === '/contact');
+    expect(contactPageLink).toBeDefined();
   });
 
   it('AC-5: schedule link uses site.scheduleCallUrl', () => {

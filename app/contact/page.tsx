@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import { getConfig } from '../../lib/config-cache';
 import { CardRows, CardRow } from '../../components/atoms/CardRows';
 import { MethodCard } from '../../components/molecules/MethodCard';
-import { ContactForm } from '../../components/molecules/ContactForm';
 import { PageHero } from '../../components/organisms/PageHero';
 import styles from './contact.module.css';
 
@@ -65,19 +64,6 @@ export default function ContactPage(): JSX.Element {
         </section>
       )}
 
-      {contact.sections.form.visible && (
-        <section aria-labelledby="form-heading" className={styles.formSection}>
-          <div className={styles.formContainer}>
-            <div className={styles.formHead}>
-              <span className={styles.eyebrow}>Or Write Directly</span>
-              <h2 id="form-heading" className={styles.formTitle}>
-                Tell us what you&apos;re working on
-              </h2>
-            </div>
-            <ContactForm />
-          </div>
-        </section>
-      )}
     </>
   );
 }

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { Button } from '../atoms/Button';
+import { Logo } from '../atoms/Logo';
 import styles from './OffcanvasNav.module.css';
 
 interface OffcanvasNavProps {
@@ -46,13 +47,7 @@ export function OffcanvasNav({ items, ctaHref, ctaLabel }: OffcanvasNavProps) {
         aria-expanded={isOpen}
         onClick={open}
       >
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-          stroke="currentColor"
-          strokeWidth={1.5}
-          fill="none"
-        >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M3 6h18M3 12h18M3 18h18" />
         </svg>
       </button>
@@ -73,30 +68,28 @@ export function OffcanvasNav({ items, ctaHref, ctaLabel }: OffcanvasNavProps) {
           aria-label="Close menu"
           onClick={close}
         >
-          <svg
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            stroke="currentColor"
-            strokeWidth={1.5}
-            fill="none"
-          >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M18 6 6 18M6 6l12 12" />
           </svg>
         </button>
 
-        <ul className={styles.navList}>
-          {items.map((item) => (
-            <li key={item.href}>
-              <Link href={item.href} className={styles.navLink}>
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <div className={styles.content}>
+          <Logo />
 
-        <Button href={ctaHref} variant="primary">
-          {ctaLabel}
-        </Button>
+          <ul className={styles.navList}>
+            {items.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className={styles.navLink}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <Button href={ctaHref} variant="primary" className={styles.ctaButton}>
+            {ctaLabel}
+          </Button>
+        </div>
       </nav>
     </>
   );

@@ -15,7 +15,6 @@ export interface SiteConfig {
   navigation: { label: string; href: string; enabled: boolean }[];
   scheduleCallUrl: string;
   location: string;
-  availability?: { open: boolean; label: string };
 }
 
 export interface MetricItem {

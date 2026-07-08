@@ -1,5 +1,5 @@
 .hamburger {
-  display: none;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: var(--size-touch);
@@ -11,6 +11,10 @@
   border-radius: var(--r-md);
 }
 
+.hamburger:hover {
+  background: var(--elevated);
+}
+
 .hamburger:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
@@ -19,12 +23,9 @@
 .hamburger svg {
   width: var(--size-icon-md);
   height: var(--size-icon-md);
-}
-
-@media (max-width: 768px) {
-  .hamburger {
-    display: inline-flex;
-  }
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
 }
 
 /* Backdrop */
@@ -49,12 +50,11 @@
   top: 0;
   right: 0;
   height: 100%;
-  width: min(360px, 100vw);
+  width: 50vw;
   background: var(--surface);
   z-index: var(--z-drawer);
   display: flex;
   flex-direction: column;
-  gap: var(--sp-lg);
   padding: var(--sp-lg);
   transform: translateX(100%);
   /* visibility: hidden removes panel from Tab order + AT tree when closed */
@@ -69,6 +69,13 @@
   transition: transform var(--dur-slow) var(--ease-spring), visibility 0s;
 }
 
+@media (max-width: 768px) {
+  .panel {
+    width: 100vw;
+  }
+}
+
+/* Close button pinned to top-right */
 .closeButton {
   align-self: flex-end;
   display: inline-flex;
@@ -83,6 +90,10 @@
   border-radius: var(--r-md);
 }
 
+.closeButton:hover {
+  background: var(--elevated);
+}
+
 .closeButton:focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
@@ -91,6 +102,19 @@
 .closeButton svg {
   width: var(--size-icon-md);
   height: var(--size-icon-md);
+  stroke: currentColor;
+  stroke-width: 1.5;
+  fill: none;
+}
+
+/* Content: logo + links + CTA — fills remaining height and centers vertically */
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2xl);
 }
 
 .navList {
@@ -99,20 +123,29 @@
   padding: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--sp-md);
 }
 
 .navLink {
   /* 20px per HTML reference spec; no --font-size token maps to this value */
   font-size: 20px;
-  font-weight: 700;
+  font-weight: var(--font-weight-light);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--fg);
+  text-align: center;
 }
 
 .navLink:hover {
   color: var(--primary);
+}
+
+/* Smaller CTA button scoped to the offcanvas panel */
+.ctaButton {
+  padding: 8px 20px;
+  min-height: 36px;
+  font-size: var(--font-size-sm);
 }
 
 @media (prefers-reduced-motion: reduce) {

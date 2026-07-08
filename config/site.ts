@@ -50,9 +50,4 @@ export const siteConfig: SiteConfig = {
   scheduleCallUrl: 'https://calendar.app.google/VDfc1ju38MvMMucKA',
 
   location: 'Berlin, Germany',
-
-  availability: {
-    open: true,
-    label: 'Taking new clients from Q3 2026',
-  },
 };

@@ -1,30 +1,65 @@
 // @vitest-environment happy-dom
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import React from 'react';
+import { describe, it, expect, vi } from 'vitest';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { render, screen } from '@testing-library/react';
 
-const BLOG_URL = 'https://blog.headlessengineer.xyz';
+vi.mock('../../lib/config-cache', () => ({
+  getConfig: () => ({
+    articles: {
+      itemsPerPage: 2,
+      metadata: { title: 'Writing - HeadlessEngineer', description: 'Articles' },
+      sections: { list: { visible: true } },
+    },
+  }),
+}));
 
-const replaceMock = vi.fn();
+vi.mock('../../lib/articles', () => ({
+  getAllArticles: () => [
+    { slug: 'a', title: 'Article A', excerpt: 'Excerpt A', publishedAt: '2024-01-03', category: 'cat', tags: [], readingTime: 3, published: true, content: '' },
+    { slug: 'b', title: 'Article B', excerpt: 'Excerpt B', publishedAt: '2024-01-02', category: 'cat', tags: [], readingTime: 3, published: true, content: '' },
+    { slug: 'c', title: 'Article C', excerpt: 'Excerpt C', publishedAt: '2024-01-01', category: 'cat', tags: [], readingTime: 3, published: true, content: '' },
+  ],
+}));
 
-beforeEach(() => {
-  replaceMock.mockClear();
-  Object.defineProperty(window, 'location', {
-    value: { replace: replaceMock },
-    writable: true,
-  });
-});
+vi.mock('../../components/organisms/ArticleGrid', () => ({
+  ArticleGrid: ({ articles, currentPage, totalPages }: { articles: unknown[]; currentPage: number; totalPages: number }) =>
+    React.createElement('div', {
+      'data-testid': 'article-grid',
+      'data-page': String(currentPage),
+      'data-total': String(totalPages),
+      'data-count': String(articles.length),
+    }),
+}));
 
 const { default: ArticlesPage } = await import('../../app/articles/page');
 
-describe('ArticlesPage — redirect to blog', () => {
-  it('renders a visible link to the blog URL', () => {
+describe('ArticlesPage — article listing', () => {
+  it('renders the ArticleGrid', () => {
     render(<ArticlesPage />);
-    const link = screen.getByRole('link', { name: /blog\.headlessengineer\.xyz/i });
-    expect(link).toHaveAttribute('href', BLOG_URL);
+    expect(screen.getByTestId('article-grid')).toBeInTheDocument();
   });
 
-  it('calls window.location.replace with the blog URL on mount', () => {
+  it('passes currentPage=1 to ArticleGrid', () => {
     render(<ArticlesPage />);
-    expect(replaceMock).toHaveBeenCalledWith(BLOG_URL);
+    expect(screen.getByTestId('article-grid')).toHaveAttribute('data-page', '1');
+  });
+
+  it('slices articles to itemsPerPage', () => {
+    render(<ArticlesPage />);
+    expect(screen.getByTestId('article-grid')).toHaveAttribute('data-count', '2');
+  });
+
+  it('computes totalPages from article count and itemsPerPage', () => {
+    render(<ArticlesPage />);
+    // 3 articles / 2 per page = 2 total pages
+    expect(screen.getByTestId('article-grid')).toHaveAttribute('data-total', '2');
+  });
+
+  it('is a Server Component — no "use client" directive', () => {
+    const src = readFileSync(join(process.cwd(), 'app/articles/page.tsx'), 'utf-8');
+    expect(src).not.toContain('"use client"');
+    expect(src).not.toContain("'use client'");
   });
 });

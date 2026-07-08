@@ -37,10 +37,6 @@ vi.mock('../../components/atoms/Logo', () => ({
   Logo: () => <div data-testid="logo" />,
 }));
 
-vi.mock('../../components/organisms/NavLinks', () => ({
-  NavLinks: () => <ul data-testid="nav-links" />,
-}));
-
 vi.mock('../../components/organisms/OffcanvasNav', () => ({
   OffcanvasNav: () => <div data-testid="offcanvas-nav" />,
 }));
@@ -66,12 +62,10 @@ const MOCK_SITE: SiteConfig = {
 };
 
 describe('Header - SPEC-006 acceptance criteria', () => {
-  it('AC-2: renders "Talk to Us" CTA link pointing to /contact', () => {
+  it('AC-2: renders OffcanvasNav (owns the CTA and all navigation)', () => {
     render(<Header site={MOCK_SITE} />);
 
-    const cta = screen.getByRole('link', { name: 'Talk to Us' });
-    expect(cta).toBeInTheDocument();
-    expect(cta).toHaveAttribute('href', '/contact');
+    expect(screen.getByTestId('offcanvas-nav')).toBeInTheDocument();
   });
 
   it('AC-8: renders SkipLink with href="#main-content" as first link', () => {

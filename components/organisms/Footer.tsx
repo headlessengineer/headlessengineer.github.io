@@ -48,7 +48,7 @@ export function Footer({ site }: FooterProps): React.JSX.Element {
             <span className={styles.colHeading}>Connect</span>
             <ul className={styles.colList}>
               <li>
-                <a href={`mailto:${site.author.email}`}>{site.author.email}</a>
+                <Link href="/contact">Contact</Link>
               </li>
               <li>
                 <a
@@ -83,16 +83,6 @@ export function Footer({ site }: FooterProps): React.JSX.Element {
             </ul>
           </div>
 
-          {/* Col 4: Location */}
-          <div className={styles.col}>
-            <span className={styles.colHeading}>Location</span>
-            <ul className={styles.colList}>
-              <li>
-                <Link href="/contact">Contact</Link>
-              </li>
-              <li>{site.location}</li>
-            </ul>
-          </div>
         </div>
 
         {/* Bottom bar */}

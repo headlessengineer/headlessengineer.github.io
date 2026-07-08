@@ -23,8 +23,8 @@ describe('aboutConfig - SPEC-002 AC-2, AC-6', () => {
 });
 
 describe('servicesConfig - SPEC-002 AC-3, AC-7', () => {
-  it('AC-3: offerings has exactly 8 items', () => {
-    expect(servicesConfig.offerings).toHaveLength(8);
+  it('AC-3: offerings has exactly 7 items', () => {
+    expect(servicesConfig.offerings).toHaveLength(7);
   });
 
   it('AC-3: every offering has all required fields', () => {

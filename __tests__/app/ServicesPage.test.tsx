@@ -117,10 +117,10 @@ describe('ServicesPage - SPEC-020 acceptance criteria', () => {
     expect(fo.getAttribute('data-chip-count')).toBe('5');
   });
 
-  it('AC2: all 8 offerings passed to FilterableOfferings', () => {
+  it('AC2: all 7 offerings passed to FilterableOfferings', () => {
     render(<ServicesPage />);
     const fo = screen.getByTestId('filterable-offerings');
-    expect(fo.getAttribute('data-offering-count')).toBe('8');
+    expect(fo.getAttribute('data-offering-count')).toBe('7');
   });
 
   // ── AC5: data mapping ─────────────────────────────────────────────────

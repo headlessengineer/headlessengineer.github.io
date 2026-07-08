@@ -1,18 +1,27 @@
-'use client';
-import { useEffect } from 'react';
+import type { Metadata } from 'next';
 import type { JSX } from 'react';
+import { getConfig } from '../../lib/config-cache';
+import { getAllArticles } from '../../lib/articles';
+import { Section } from '../../components/atoms/Section';
+import { ArticleGrid } from '../../components/organisms/ArticleGrid';
 
-const BLOG_URL = 'https://blog.headlessengineer.xyz';
+export function generateMetadata(): Metadata {
+  const { articles } = getConfig();
+  return {
+    title: articles.metadata.title,
+    description: articles.metadata.description,
+  };
+}
 
 export default function ArticlesPage(): JSX.Element {
-  useEffect(() => {
-    window.location.replace(BLOG_URL);
-  }, []);
+  const { articles: cfg } = getConfig();
+  const all = getAllArticles();
+  const totalPages = Math.ceil(all.length / cfg.itemsPerPage);
+  const slice = all.slice(0, cfg.itemsPerPage);
 
   return (
-    <p style={{ padding: 'var(--sp-xl)', textAlign: 'center' }}>
-      Redirecting to{' '}
-      <a href={BLOG_URL}>blog.headlessengineer.xyz</a>…
-    </p>
+    <Section>
+      <ArticleGrid articles={slice} currentPage={1} totalPages={totalPages} basePath="/articles/page" />
+    </Section>
   );
 }

@@ -50,7 +50,7 @@ export default function HomePage(): JSX.Element {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
-      {home.sections.hero.visible && <Hero hero={home.hero} availability={site.availability} />}
+      {home.sections.hero.visible && <Hero hero={home.hero} />}
       {home.sections.metrics.visible && about.metrics.length > 0 && <MetricsStrip metrics={about.metrics} />}
       {home.sections.services.visible && <HomeServices coreServices={about.coreServices} />}
       <TechMarquee />

@@ -108,17 +108,17 @@ export const servicesConfig = {
       engagement: 'Part-time or advisory retainer',
       href: '/services/fractional-leadership',
     },
-    {
-      id: 'team-augmentation',
-      category: 'leadership',
-      tag: 'Team',
-      title: 'Team Augmentation & Staffing',
-      value: 'Specialist Engineers · Code Review Standards · Engineering Mentorship',
-      description:
-        'We staff engagements with the specific skills they need - frontend, mobile, data, DevOps - drawn from a vetted network, with a senior architect overseeing quality and coherence throughout.',
-      engagement: 'Project-based staffing or embedded team extension',
-      href: '/services/team-augmentation',
-    },
+    // {
+    //   id: 'team-augmentation',
+    //   category: 'leadership',
+    //   tag: 'Team',
+    //   title: 'Team Augmentation & Staffing',
+    //   value: 'Specialist Engineers · Code Review Standards · Engineering Mentorship',
+    //   description:
+    //     'We staff engagements with the specific skills they need - frontend, mobile, data, DevOps - drawn from a vetted network, with a senior architect overseeing quality and coherence throughout.',
+    //   engagement: 'Project-based staffing or embedded team extension',
+    //   href: '/services/team-augmentation',
+    // },
   ],
 
   cta: {

@@ -3,23 +3,18 @@ import type { HeroConfig } from '../../types/config';
 import { Button } from '../atoms/Button';
 import { CodePanel } from '../atoms/CodePanel';
 import { HeroTaglineRotator } from '../atoms/HeroTaglineRotator';
-import { AvailabilityBadge } from '../atoms/AvailabilityBadge';
 import styles from './Hero.module.css';
 
 interface HeroProps {
   hero: HeroConfig;
-  availability?: { open: boolean; label: string };
 }
 
-export function Hero({ hero, availability }: HeroProps): JSX.Element {
+export function Hero({ hero }: HeroProps): JSX.Element {
   return (
     <section className={styles.hero} aria-labelledby="hero-heading">
       <div className={styles.container}>
         <div className={styles.heroGrid}>
-          <div>
-            {availability && (
-              <AvailabilityBadge open={availability.open} label={availability.label} />
-            )}
+          <div className={styles.heroContent}>
             <span className={styles.eyebrow}>Technology Consultancy</span>
             <HeroTaglineRotator taglines={hero.taglines ?? []} />
             <h1 id="hero-heading" className={styles.display}>

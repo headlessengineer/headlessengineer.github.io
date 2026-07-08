@@ -131,11 +131,6 @@ describe('ContactPage - SPEC-021 acceptance criteria', () => {
     expect(src).not.toContain("'use client'");
   });
 
-  it('ContactForm sentinel is rendered', () => {
-    render(<ContactPage />);
-    expect(screen.getByTestId('contact-form')).toBeInTheDocument();
-  });
-
   // ── CSS token usage ───────────────────────────────────────────────────
 
   it('CSS: methods section uses var(--surface)', () => {
@@ -146,7 +141,4 @@ describe('ContactPage - SPEC-021 acceptance criteria', () => {
     expect(pageHeroCss).toMatch(/@media[^{]*max-width[^{]*768px/);
   });
 
-  it('CSS: form container max-width 640px', () => {
-    expect(css).toContain('640px');
-  });
 });
