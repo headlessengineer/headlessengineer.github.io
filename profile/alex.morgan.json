@@ -1,0 +1,148 @@
+{
+  "id": "alex.morgan",
+  "profileType": "engineer",
+  "personal": {
+    "firstName": "Alex",
+    "lastName": "Morgan",
+    "displayName": "Alex Morgan",
+    "role": "Senior Software Engineer",
+    "location": "Amsterdam, Netherlands",
+    "email": "alex@headlessengineer.xyz",
+    "github": "github.com/alex-morgan-he",
+    "website": null,
+    "photo": null,
+    "yearsExperience": 8
+  },
+  "about": {
+    "paragraphs": [
+      "Full-stack engineer with 8 years shipping production software across fintech, retail, and SaaS. Strongest in backend systems and APIs — but comfortable owning the full path from database schema to user-facing component.",
+      "I care about correctness first, performance second, and elegance third — in that order. Most performance problems are correctness problems in disguise."
+    ],
+    "callout": "Build it right, then build it fast."
+  },
+  "metrics": [
+    { "value": "8+", "label": "Years in production software" },
+    { "value": "40%", "label": "API latency reduction on a high-traffic payment service" },
+    { "value": "5", "label": "Open source libraries with 1k+ GitHub stars" },
+    { "value": "0", "label": "Production incidents in the last 12 months" }
+  ],
+  "stack": [
+    {
+      "group": "Languages",
+      "chips": ["TypeScript", "Go", "Python", "Rust"]
+    },
+    {
+      "group": "Frontend",
+      "chips": ["Next.js", "React", "Tailwind CSS", "WebSockets"]
+    },
+    {
+      "group": "Backend",
+      "chips": ["Node.js", "gRPC", "REST", "GraphQL"]
+    },
+    {
+      "group": "Data",
+      "chips": ["PostgreSQL", "Redis", "Kafka", "ClickHouse"]
+    },
+    {
+      "group": "Infrastructure",
+      "chips": ["AWS", "Docker", "Kubernetes", "Terraform"]
+    }
+  ],
+  "practices": [
+    "Test-Driven Development",
+    "API Contract Design",
+    "Event-Driven Architecture",
+    "Observability",
+    "Code Review"
+  ],
+  "projects": [
+    {
+      "name": "Payment Gateway Abstraction",
+      "role": "Lead",
+      "stack": "Go · PostgreSQL · Redis",
+      "description": "Unified multi-PSP payment layer handling routing, retries, and reconciliation across 12 payment providers.",
+      "outcome": "40% reduction in API latency, 99.97% uptime over 18 months"
+    },
+    {
+      "name": "Real-Time Inventory Sync",
+      "role": "Engineer",
+      "stack": "Kafka · TypeScript · PostgreSQL",
+      "description": "Event-driven system synchronising warehouse stock across 8 regional depots with sub-second consistency.",
+      "outcome": "Eliminated manual reconciliation; 3 hours → near real-time"
+    },
+    {
+      "name": "Developer Portal",
+      "role": "Full-stack",
+      "stack": "Next.js · Node.js · OpenAPI",
+      "description": "Self-service API documentation and sandbox environment for external integrators.",
+      "outcome": "Reduced integration onboarding time from 2 weeks to 3 days"
+    },
+    {
+      "name": "ML Feature Pipeline",
+      "role": "Engineer",
+      "stack": "Python · ClickHouse · Airflow",
+      "description": "Batch + streaming feature computation pipeline feeding a fraud detection model in production.",
+      "outcome": "Fraud detection latency from 2s → 200ms"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Senior Software Engineer",
+      "company": "headlessengineer",
+      "location": "Remote",
+      "dates": "Jan 2025 – Present",
+      "bullets": [
+        "Delivers full-stack features across client engagements from fintech to retail, owning backend services and frontend components end-to-end.",
+        "Sets and maintains engineering standards across active projects — test coverage, API contracts, and deployment pipelines."
+      ]
+    },
+    {
+      "title": "Software Engineer",
+      "company": "Mollie",
+      "location": "Amsterdam, Netherlands",
+      "dates": "Mar 2021 – Dec 2024",
+      "bullets": [
+        "Built and maintained core payment processing services handling millions of transactions per month.",
+        "Led migration of a PHP monolith to Go microservices with zero-downtime cutover.",
+        "Introduced ClickHouse for analytics, reducing reporting query times from minutes to seconds."
+      ]
+    },
+    {
+      "title": "Software Engineer",
+      "company": "Picnic",
+      "location": "Amsterdam, Netherlands",
+      "dates": "Jul 2018 – Feb 2021",
+      "bullets": [
+        "Built real-time inventory and order routing services for a fast-scaling grocery delivery platform.",
+        "Owned the warehouse management API surface, serving both mobile apps and internal tooling."
+      ]
+    },
+    {
+      "title": "Junior Developer",
+      "company": "Ebury",
+      "location": "London, UK",
+      "dates": "Sep 2016 – Jun 2018",
+      "bullets": [
+        "Developed FX and international payment workflows in Python and Django.",
+        "Built internal tooling for compliance and KYC onboarding processes."
+      ]
+    }
+  ],
+  "certifications": [
+    { "name": "AWS Solutions Architect — Associate", "issuer": "Amazon Web Services", "date": "Jan 2023" },
+    { "name": "Certified Kubernetes Application Developer", "issuer": "CNCF", "date": "Mar 2022" },
+    { "name": "Go Programming Language Certification", "issuer": "Google", "date": "Nov 2021" }
+  ],
+  "education": [
+    {
+      "degree": "BSc Computer Science",
+      "institution": "University of Edinburgh",
+      "years": "2012 – 2016",
+      "grade": "First Class Honours"
+    }
+  ],
+  "languages": [
+    { "name": "English", "level": "Native" },
+    { "name": "Dutch", "level": "Intermediate" }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "2.0.0",
+  "profileTypes": ["founder", "engineer", "strategist", "delivery"],
+  "profiles": [
+    {
+      "id": "karan.popat",
+      "file": "karan.popat.json",
+      "profileType": "founder",
+      "name": "Karan Popat",
+      "title": "Founder & Principal Engineer",
+      "location": "Berlin, Germany"
+    },
+    {
+      "id": "alex.morgan",
+      "file": "alex.morgan.json",
+      "profileType": "engineer",
+      "name": "Alex Morgan",
+      "title": "Senior Software Engineer",
+      "location": "Amsterdam, Netherlands"
+    },
+    {
+      "id": "sam.chen",
+      "file": "sam.chen.json",
+      "profileType": "strategist",
+      "name": "Sam Chen",
+      "title": "Tech Strategist",
+      "location": "Singapore / Remote"
+    },
+    {
+      "id": "maya.brooks",
+      "file": "maya.brooks.json",
+      "profileType": "delivery",
+      "name": "Maya Brooks",
+      "title": "Delivery Lead",
+      "location": "London, UK"
+    }
+  ]
+}

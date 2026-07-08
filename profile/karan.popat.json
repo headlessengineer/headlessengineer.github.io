@@ -1,0 +1,143 @@
+{
+  "id": "karan.popat",
+  "profileType": "founder",
+  "personal": {
+    "firstName": "Karan",
+    "lastName": "Popat",
+    "displayName": "Karan Popat",
+    "role": "Founder & Principal Engineer",
+    "location": "Berlin, Germany",
+    "email": "karan.popat@headlessengineer.xyz",
+    "github": "github.com/popatkaran",
+    "website": "headlessengineer.xyz",
+    "photo": "/images/people/karan.popat.png",
+    "yearsExperience": 12
+  },
+  "about": {
+    "paragraphs": [
+      "I started headlessengineer because I noticed a gap: most businesses either get junior developers who learn on the job, or large consultancies that overengineer everything. There is a third option — a senior engineer who has built things at scale, understands business trade-offs, and will actually write the code.",
+      "Across 12 years I have architected distributed commerce platforms, led cross-continent engineering teams, and brought agentic AI from proof-of-concept into production. The common thread is translating real business problems into working software — whatever stack that takes."
+    ],
+    "callout": "The right technology for the problem. No dogma, no hype."
+  },
+  "metrics": [
+    { "value": "12+", "label": "Years building production software" },
+    { "value": "26", "label": "Countries served by a single platform build" },
+    { "value": "65%", "label": "Deployment time reduction on an enterprise OMS" },
+    { "value": "3", "label": "POCs taken to production in the last 18 months" }
+  ],
+  "philosophy": [
+    "Lead with the outcome, not the stack.",
+    "Complexity is a cost — justify it or cut it.",
+    "The best architecture is the one the team can maintain."
+  ],
+  "capabilities": [
+    {
+      "area": "Platform Engineering",
+      "items": ["Composable commerce", "Event-driven systems", "MACH architecture", "Distributed order management"]
+    },
+    {
+      "area": "Engineering Leadership",
+      "items": ["Technical direction", "Team structure", "Architecture governance", "Code review culture"]
+    },
+    {
+      "area": "AI Integration",
+      "items": ["Agentic workflows", "LLM integration", "MCP tooling", "Production AI systems"]
+    },
+    {
+      "area": "Delivery",
+      "items": ["Full-stack ownership", "CI/CD pipelines", "Infrastructure-as-code", "Cross-functional teams"]
+    }
+  ],
+  "work": [
+    {
+      "name": "Distributed Order Management",
+      "context": "Multi-country OMS coordinating fulfilment across regional markets",
+      "stack": "Go · Kafka · Kubernetes",
+      "outcome": "65% reduction in deployment time through pipeline automation and IaC"
+    },
+    {
+      "name": "Headless B2C Commerce Platform",
+      "context": "Greenfield storefront covering 26 countries and 13 languages",
+      "stack": "Spryker · Next.js · TypeScript",
+      "outcome": "Multi-PSP payments, location-based routing, Redis-backed performance"
+    },
+    {
+      "name": "AI Documentation Pipeline",
+      "context": "Generates and updates technical docs from code changes automatically",
+      "stack": "Azure AI · CI/CD · PHP",
+      "outcome": "Taken from POC to live production client engagement"
+    },
+    {
+      "name": "Semantic Search POC",
+      "context": "Vector search over product catalogue for a Spryker storefront",
+      "stack": "NLP · Pinecone · Python",
+      "outcome": "Prototype shipped; improved search relevance measurably"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Lead Software Engineer — Technology Architect",
+      "company": "Accenture Song",
+      "location": "Berlin, Germany",
+      "dates": "Sep 2021 – Jun 2025",
+      "bullets": [
+        "Architected enterprise eCommerce platforms across B2B, B2C, and D2C for clients in automotive, FMCG, and sportswear.",
+        "Led a multi-country OMS rollout achieving 65% reduction in deployment time through IaC and pipeline automation.",
+        "Pioneered AI-enhanced development — agentic tooling and automation pipelines improving throughput and documentation quality.",
+        "Led cross-functional teams of 9–15 engineers, owning technical direction, architecture governance, and delivery quality."
+      ]
+    },
+    {
+      "title": "Software Engineer II",
+      "company": "Inviqa GmbH",
+      "location": "Remote / Ahmedabad",
+      "dates": "Dec 2018 – Aug 2021",
+      "bullets": [
+        "Delivered a full greenfield B2C platform across 26 countries and 13 languages on Spryker.",
+        "Migrated a monolith to GoLang microservices using the Strangler Fig pattern.",
+        "Contributed to headless commerce with Next.js and TypeScript ahead of industry MACH adoption."
+      ]
+    },
+    {
+      "title": "Senior Software Engineer",
+      "company": "Krish TechnoLabs",
+      "location": "Ahmedabad, India",
+      "dates": "Mar 2015 – Nov 2018",
+      "bullets": [
+        "Designed and delivered Magento solutions across B2B and B2C — greenfield builds, migrations, multi-store setups.",
+        "Primary technical point of contact, translating business requirements into specifications."
+      ]
+    },
+    {
+      "title": "Software Engineer",
+      "company": "TatvaSoft",
+      "location": "Ahmedabad, India",
+      "dates": "Jun 2013 – Mar 2015",
+      "bullets": [
+        "Delivered Magento eCommerce solutions with full-cycle ownership from theme to module to client communication."
+      ]
+    }
+  ],
+  "certifications": [
+    { "name": "Claude Code in Action", "issuer": "Anthropic", "date": "Mar 2026" },
+    { "name": "Spryker Certified Foundations Developer", "issuer": "Spryker", "date": "Sep 2022" },
+    { "name": "Adobe Certified Professional — Magento Commerce", "issuer": "Adobe", "date": "Mar 2019" },
+    { "name": "AWS Cloud Quest: Cloud Practitioner", "issuer": "Amazon Web Services", "date": "Apr 2023" },
+    { "name": "Salesforce Certified Associate", "issuer": "Salesforce", "date": "Jun 2025" }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Engineering — Computer Engineering",
+      "institution": "Atmiya Institute of Technology & Science",
+      "years": "2009 – 2013",
+      "grade": "CGPA 7.77"
+    }
+  ],
+  "languages": [
+    { "name": "English", "level": "Business fluent" },
+    { "name": "German", "level": "A2 / B1" },
+    { "name": "Hindi", "level": "Native" },
+    { "name": "Gujarati", "level": "Mother tongue" }
+  ]
+}

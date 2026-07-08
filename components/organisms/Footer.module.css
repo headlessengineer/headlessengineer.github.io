@@ -99,6 +99,12 @@
   line-height: 1.5;
 }
 
+@media (min-width: 1280px) {
+  .container {
+    padding: 0;
+  }
+}
+
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: 1fr 1fr;

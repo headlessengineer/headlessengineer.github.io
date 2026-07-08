@@ -1,0 +1,115 @@
+{
+  "id": "maya.brooks",
+  "profileType": "delivery",
+  "personal": {
+    "firstName": "Maya",
+    "lastName": "Brooks",
+    "displayName": "Maya Brooks",
+    "role": "Delivery Lead",
+    "location": "London, UK",
+    "email": "maya@headlessengineer.xyz",
+    "github": null,
+    "website": null,
+    "photo": null,
+    "yearsExperience": 9
+  },
+  "about": {
+    "paragraphs": [
+      "I make sure software gets shipped. Not demos, not sprints that end with 'we need another sprint' — working software, in the hands of the people who need it, on or before the date agreed.",
+      "Delivery leadership is a technical job. I need to understand the system well enough to know when an estimate is wrong, when a dependency will kill the timeline, and when a technical decision is being made for political rather than engineering reasons."
+    ],
+    "callout": "Shipped beats perfect."
+  },
+  "metrics": [
+    { "value": "9+", "label": "Years running engineering delivery" },
+    { "value": "92%", "label": "On-time delivery rate across all engagements" },
+    { "value": "18", "label": "Platforms and products shipped end-to-end" },
+    { "value": "3×", "label": "Average team velocity improvement through structured practices" }
+  ],
+  "domains": [
+    "Agile & Lean delivery",
+    "Cross-functional team leadership",
+    "Stakeholder management",
+    "Technical programme management",
+    "Risk and dependency mapping",
+    "CI/CD and DevOps practices",
+    "OKR and roadmap facilitation",
+    "Post-incident review"
+  ],
+  "deliveries": [
+    {
+      "name": "Platform Re-launch",
+      "scope": "Full B2C platform relaunch for a fashion retailer with 8 regional markets",
+      "tech": "Spryker · Next.js · Cloudflare",
+      "outcome": "Launched on time across all 8 markets; zero post-launch P1 incidents"
+    },
+    {
+      "name": "Core Banking Migration",
+      "scope": "Multi-phase data and service migration from legacy banking core to modern SaaS platform",
+      "tech": "AWS · Kubernetes · PostgreSQL",
+      "outcome": "22-month programme delivered in 19 months; full regulatory compliance maintained"
+    },
+    {
+      "name": "AI Product Launch",
+      "scope": "End-to-end delivery of an LLM-powered document intelligence product from 0 to GA",
+      "tech": "Next.js · Claude API · Python",
+      "outcome": "GA shipped in 14 weeks; first paying customers within 30 days"
+    },
+    {
+      "name": "Engineering Org Reset",
+      "scope": "Restructured a 40-person engineering org post-acquisition with duplicate teams and conflicting processes",
+      "tech": "Process · Hiring · OKRs",
+      "outcome": "Reduced team count from 9 to 5 value streams; sprint throughput doubled in 6 months"
+    }
+  ],
+  "experience": [
+    {
+      "title": "Delivery Lead",
+      "company": "headlessengineer",
+      "location": "Remote",
+      "dates": "Mar 2025 – Present",
+      "bullets": [
+        "Leads delivery across all active client engagements, owning timelines, dependencies, and stakeholder communication.",
+        "Establishes delivery practices for new engagements — team rituals, CI/CD standards, escalation paths."
+      ]
+    },
+    {
+      "title": "Engineering Programme Manager",
+      "company": "Deliveroo",
+      "location": "London, UK",
+      "dates": "Jun 2020 – Feb 2025",
+      "bullets": [
+        "Led delivery of the consumer payments platform modernisation — 12 engineering teams, 24 months, zero downtime.",
+        "Defined and rolled out engineering delivery standards across 8 product areas following rapid headcount growth.",
+        "Built and managed relationships with key SaaS vendors and external engineering partners."
+      ]
+    },
+    {
+      "title": "Technical Project Manager",
+      "company": "Thoughtworks",
+      "location": "London, UK",
+      "dates": "Sep 2016 – May 2020",
+      "bullets": [
+        "Delivered digital transformation engagements for clients in financial services and retail.",
+        "Managed cross-functional teams of 8–20 across design, engineering, and QA in agile environments."
+      ]
+    }
+  ],
+  "certifications": [
+    { "name": "PMP — Project Management Professional", "issuer": "PMI", "date": "Aug 2019" },
+    { "name": "SAFe 6 Agilist", "issuer": "Scaled Agile", "date": "Mar 2022" },
+    { "name": "AWS Cloud Practitioner", "issuer": "Amazon Web Services", "date": "Nov 2021" }
+  ],
+  "education": [
+    {
+      "degree": "BSc Mathematics with Computer Science",
+      "institution": "University of Warwick",
+      "years": "2012 – 2015",
+      "grade": "2:1"
+    }
+  ],
+  "languages": [
+    { "name": "English", "level": "Native" },
+    { "name": "French", "level": "Conversational" }
+  ]
+}

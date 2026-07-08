@@ -1,0 +1,83 @@
+{
+  "id": "sam.chen",
+  "profileType": "strategist",
+  "personal": {
+    "firstName": "Sam",
+    "lastName": "Chen",
+    "displayName": "Sam Chen",
+    "role": "Tech Strategist",
+    "location": "Singapore / Remote",
+    "email": "sam@headlessengineer.xyz",
+    "github": null,
+    "website": null,
+    "photo": null,
+    "yearsExperience": 10
+  },
+  "about": {
+    "paragraphs": [
+      "I sit at the junction of business strategy and engineering execution. My work is translating ambiguous business problems into precise technical directions — and making sure the direction survives contact with implementation.",
+      "I have worked with founders building their first platform and with enterprises rearchitecting systems that serve millions. The skill is the same in both cases: figuring out what actually matters, then building only that."
+    ],
+    "callout": "Strategy without execution is fiction. I do both."
+  },
+  "metrics": [
+    { "value": "10+", "label": "Years bridging business and engineering" },
+    { "value": "30%", "label": "Average reduction in planned scope after discovery" },
+    { "value": "12", "label": "Platform modernisation programs completed" },
+    { "value": "4", "label": "Industries advised: retail, fintech, health, SaaS" }
+  ],
+  "expertise": [
+    "Technology strategy and roadmapping",
+    "Platform modernisation and migration planning",
+    "Build vs. buy vs. integrate decisions",
+    "Architecture review and vendor selection",
+    "Engineering team structure and hiring",
+    "Technical due diligence"
+  ],
+  "sectors": [
+    "Retail & eCommerce",
+    "Fintech & Payments",
+    "Healthcare & MedTech",
+    "Enterprise SaaS"
+  ],
+  "engagements": [
+    {
+      "context": "Series B SaaS company with a legacy monolith blocking product velocity",
+      "challenge": "Engineering team spending 60% of sprint capacity on maintenance and firefighting",
+      "outcome": "Delivered a migration roadmap and team restructure; velocity improved 2× within two quarters"
+    },
+    {
+      "context": "Retail group evaluating a full commerce platform replacement",
+      "challenge": "Vendor selection across six platforms with conflicting stakeholder priorities",
+      "outcome": "Ran structured RFP and proof-of-concept process; saved £2M vs. initial shortlist"
+    },
+    {
+      "context": "HealthTech startup building a patient data platform from scratch",
+      "challenge": "Founder with a strong product vision but no engineering team or architecture",
+      "outcome": "Defined MVP scope, selected tech stack, hired founding engineers — live in 9 months"
+    },
+    {
+      "context": "PE-backed retail business post-acquisition requiring technical due diligence",
+      "challenge": "Assess risk in an inherited codebase with no documentation and a departing team",
+      "outcome": "Delivered risk report and remediation roadmap; informed final acquisition terms"
+    }
+  ],
+  "perspective": "Most technology problems are prioritisation problems. The system is usually fixable — the real question is whether you are fixing the right thing.",
+  "certifications": [
+    { "name": "TOGAF 9 Certified", "issuer": "The Open Group", "date": "May 2020" },
+    { "name": "AWS Solutions Architect — Professional", "issuer": "Amazon Web Services", "date": "Oct 2021" },
+    { "name": "Certified Scrum Product Owner", "issuer": "Scrum Alliance", "date": "Feb 2019" }
+  ],
+  "education": [
+    {
+      "degree": "MEng Information Engineering",
+      "institution": "Imperial College London",
+      "years": "2010 – 2014",
+      "grade": "First Class"
+    }
+  ],
+  "languages": [
+    { "name": "English", "level": "Native" },
+    { "name": "Mandarin", "level": "Native" }
+  ]
+}
