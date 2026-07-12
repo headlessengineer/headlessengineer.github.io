@@ -7,7 +7,7 @@ import { ServiceCard } from '../../components/molecules/ServiceCard';
 import { TeamCardGrid } from '../../components/organisms/TeamCardGrid';
 import type { TeamMember } from '../../components/organisms/TeamCardGrid';
 import { getAllProfiles } from '../../lib/profile';
-import styles from './profile.module.css';
+import styles from './team.module.css';
 
 export const metadata: Metadata = {
   title: 'Team',

@@ -27,6 +27,7 @@ interface TeamCardGridProps {
 }
 
 const INITIAL_COUNT = 3;
+const PAGE_SIZE = 3;
 
 function resolvePhoto(photo: string | null, placeholderIndex: number): string {
   return photo ?? `/images/people/placeholders/${placeholderIndex}.png`;
@@ -139,7 +140,7 @@ function TeamCard({ member, variant, isNew, newIndex }: TeamCardProps): JSX.Elem
         </div>
         {member.id && (
           <Link
-            href={`/profile/${member.id}`}
+            href={`/team/member/${member.id}`}
             className={styles.cardLink}
             aria-label={`View ${member.firstName} ${member.lastName}'s profile`}
           />
@@ -175,7 +176,7 @@ function TeamCard({ member, variant, isNew, newIndex }: TeamCardProps): JSX.Elem
           )}
         </div>
         {member.id && (
-          <Link href={`/profile/${member.id}`} className={styles.cardLink} aria-label={`View ${member.firstName} ${member.lastName}'s profile`} />
+          <Link href={`/team/member/${member.id}`} className={styles.cardLink} aria-label={`View ${member.firstName} ${member.lastName}'s profile`} />
         )}
       </article>
     );
@@ -216,7 +217,7 @@ function TeamCard({ member, variant, isNew, newIndex }: TeamCardProps): JSX.Elem
           )}
         </div>
         {member.id && (
-          <Link href={`/profile/${member.id}`} className={styles.cardLink} aria-label={`View ${member.firstName} ${member.lastName}'s profile`} />
+          <Link href={`/team/member/${member.id}`} className={styles.cardLink} aria-label={`View ${member.firstName} ${member.lastName}'s profile`} />
         )}
       </article>
     );
@@ -247,41 +248,67 @@ function TeamCard({ member, variant, isNew, newIndex }: TeamCardProps): JSX.Elem
         </div>
       )}
       {member.id && (
-        <Link href={`/profile/${member.id}`} className={styles.cardLink} aria-label={`View ${member.firstName} ${member.lastName}'s profile`} />
+        <Link href={`/team/member/${member.id}`} className={styles.cardLink} aria-label={`View ${member.firstName} ${member.lastName}'s profile`} />
       )}
     </article>
   );
 }
 
 export function TeamCardGrid({ members, variant }: TeamCardGridProps): JSX.Element {
-  const [showAll, setShowAll] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
+  // Once all members have been loaded, stays true — allows instant expand on re-open
+  const [allEverLoaded, setAllEverLoaded] = useState(false);
+  // Index where the most recent batch starts, for staggered animation
+  const [newBatchStart, setNewBatchStart] = useState<number | null>(null);
 
-  const paginated = members.length > INITIAL_COUNT;
-  const visibleMembers = showAll ? members : members.slice(0, INITIAL_COUNT);
+  const total = members.length;
+  const showingAll = visibleCount >= total;
+  const paginated = total > INITIAL_COUNT;
+
+  function handleShowMore() {
+    const nextCount = allEverLoaded
+      ? total
+      : Math.min(visibleCount + PAGE_SIZE, total);
+    setNewBatchStart(visibleCount);
+    setVisibleCount(nextCount);
+    if (nextCount >= total) setAllEverLoaded(true);
+  }
+
+  function handleShowLess() {
+    setVisibleCount(INITIAL_COUNT);
+    setNewBatchStart(null);
+  }
+
+  const visibleMembers = members.slice(0, visibleCount);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.grid} data-variant={String(variant)}>
-        {visibleMembers.map((member, i) => (
-          <TeamCard
-            key={member.id || `placeholder-${member.placeholderIndex}`}
-            member={member}
-            variant={variant}
-            isNew={showAll && i >= INITIAL_COUNT}
-            newIndex={showAll && i >= INITIAL_COUNT ? i - INITIAL_COUNT : 0}
-          />
-        ))}
-        {showAll && <CTACard newIndex={members.length - INITIAL_COUNT} />}
+        {visibleMembers.map((member, i) => {
+          const isNew = newBatchStart !== null && i >= newBatchStart;
+          return (
+            <TeamCard
+              key={member.id || `placeholder-${member.placeholderIndex}`}
+              member={member}
+              variant={variant}
+              isNew={isNew}
+              newIndex={isNew ? i - newBatchStart : 0}
+            />
+          );
+        })}
+        {showingAll && (
+          <CTACard newIndex={newBatchStart !== null ? visibleCount - newBatchStart : 0} />
+        )}
       </div>
       {paginated && (
         <div className={styles.viewMoreWrap}>
-          {showAll ? (
-            <Button variant="secondary" onClick={() => setShowAll(false)}>
+          {showingAll ? (
+            <Button variant="secondary" onClick={handleShowLess}>
               Show less
             </Button>
           ) : (
-            <Button variant="secondary" onClick={() => setShowAll(true)}>
-              View more
+            <Button variant="secondary" onClick={handleShowMore}>
+              Show more
             </Button>
           )}
         </div>

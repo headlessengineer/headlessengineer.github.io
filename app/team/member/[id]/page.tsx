@@ -1,18 +1,18 @@
 import type { JSX } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getProfile, getAllProfileIds } from '../../../lib/profile';
+import { getProfile, getAllProfileIds } from '../../../../lib/profile';
 import type {
   Profile,
   FounderProfile,
   EngineerProfile,
   StrategistProfile,
   DeliveryProfile,
-} from '../../../types/profile';
-import { FounderTemplate } from '../../../components/templates/FounderTemplate';
-import { EngineerTemplate } from '../../../components/templates/EngineerTemplate';
-import { StrategistTemplate } from '../../../components/templates/StrategistTemplate';
-import { DeliveryTemplate } from '../../../components/templates/DeliveryTemplate';
+} from '../../../../types/profile';
+import { FounderTemplate } from '../../../../components/templates/FounderTemplate';
+import { EngineerTemplate } from '../../../../components/templates/EngineerTemplate';
+import { StrategistTemplate } from '../../../../components/templates/StrategistTemplate';
+import { DeliveryTemplate } from '../../../../components/templates/DeliveryTemplate';
 
 export const dynamicParams = false;
 
@@ -49,7 +49,7 @@ function renderTemplate(profile: Profile): JSX.Element {
   }
 }
 
-export default async function ProfilePage({
+export default async function MemberPage({
   params,
 }: {
   params: Promise<{ id: string }>;
