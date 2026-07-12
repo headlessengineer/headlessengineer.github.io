@@ -1,7 +1,8 @@
 # HTML Slide Template
 
-Complete HTML structure with navigation and headlessengineer tokens. Chart.js
-available via npm (not CDN — see integration section).
+Complete HTML structure with headlessengineer tokens. All runtime (navigation,
+theme toggle, scroll mode, offcanvas) is provided by `presentation.js` — include
+that script once per deck. No inline scripts, no nav button HTML.
 
 ## Base Structure
 
@@ -13,36 +14,88 @@ available via npm (not CDN — see integration section).
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presentation Title</title>
     <style>
-        /* headlessengineer design tokens */
+        /* ── Tier 1: primitives ──────────────────────────────────── */
         :root {
-            --bg:           #0a0a0a;   /* n-950 */
-            --fg:           #fafafa;   /* n-50  */
-            --fg-secondary: rgba(250,250,250,0.6);
-            --surface:      #141414;   /* n-900 */
-            --primary:      #009999;
-            --on-primary:   #ffffff;
-
-            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
-
-            --motion-fast:   150ms;
-            --motion-normal: 300ms;
+            --white:  #ffffff;
+            --n-50:   #fafafa;
+            --n-100:  #f2f2f2;
+            --n-200:  #e0e0e0;
+            --n-300:  #b3b3b3;
+            --n-500:  #808080;
+            --n-600:  #4d4d4d;
+            --n-700:  #2e2e2e;
+            --n-800:  #1f1f1f;
+            --n-900:  #141414;
+            --n-950:  #0a0a0a;
+            --black:  #000000;
+            --accent-brand: #009999;
         }
 
-        /* Base */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* ── Tier 2: semantics — LIGHT (default, matches globals.css) */
+        :root {
+            --bg:           var(--n-50);
+            --surface:      var(--n-50);
+            --surface-card: var(--white);
+            --elevated:     var(--n-100);
+            --border:       var(--n-200);
+            --fg:           var(--n-950);
+            --fg-secondary: var(--n-600);
+            --fg-muted:     var(--n-500);   /* constant in both themes */
+            --primary:      var(--accent-brand);
+            --on-primary:   var(--white);
+        }
+
+        /* ── Tier 2: semantics — DARK (body.dark-mode, matches globals.css) */
+        body.dark-mode {
+            --bg:           var(--n-950);
+            --surface:      var(--n-900);
+            --surface-card: var(--black);
+            --elevated:     var(--n-800);
+            --border:       var(--n-700);
+            --fg:           var(--white);
+            --fg-secondary: var(--n-300);
+            /* --fg-muted and --primary are constant */
+        }
+
+        /* ── Fonts ───────────────────────────────────────────────── */
+        :root {
+            --font-sans:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono:     'JetBrains Mono', 'Fira Code', monospace;
+            --font-wordmark: 'Bitcount Grid Double', var(--font-sans);
+        }
+
+        /* ── Spacing / radius ────────────────────────────────────── */
+        :root {
+            --r-sm: 4px;
+            --r-md: 8px;
+            --r-lg: 12px;
+            --dur-fast: 150ms;
+            --dur-base: 200ms;
+            --dur-slow: 300ms;
+            --ease-out:    ease-out;
+            --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+            --size-touch: 48px;
+            --pad: 56px;
+        }
+
+        /* ── Reset / base ────────────────────────────────────────── */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
             background: var(--bg);
             color: var(--fg);
             font-family: var(--font-sans);
             overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color var(--dur-base) var(--ease-out),
+                        color var(--dur-base) var(--ease-out);
         }
+        body.scroll-mode { overflow-y: auto; }
 
-        /* 16:9 Aspect Ratio Container (desktop) */
+        /* ── Deck container ──────────────────────────────────────── */
         .slide-deck {
             position: relative;
-            width: 100vw;
-            height: 100vh;
+            width: 100vw; height: 100vh;
             overflow: hidden;
         }
 
@@ -56,187 +109,153 @@ available via npm (not CDN — see integration section).
             }
         }
 
+        /* Scroll mode overrides */
+        body.scroll-mode .slide-deck {
+            position: static; width: 100%; height: auto;
+            max-width: none; max-height: none; overflow: visible;
+        }
+        body.scroll-mode .slide {
+            position: relative; inset: unset;
+            opacity: 1 !important; visibility: visible !important;
+            min-height: 100svh; height: auto; transition: none;
+        }
+
+        /* ── Slide ───────────────────────────────────────────────── */
         .slide {
-            position: absolute;
-            width: 100%; height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 60px;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity var(--motion-normal);
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            padding: var(--pad);
+            opacity: 0; visibility: hidden;
+            transition: opacity var(--dur-slow) var(--ease-out);
             background: var(--bg);
             overflow: hidden;
         }
-
         .slide.active { opacity: 1; visibility: visible; }
 
-        .slide-content {
-            width: 100%;
-            max-width: 100%;
-            max-height: 100%;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 16px;
+        /* ── Anatomy zones ───────────────────────────────────────── */
+        .slide-header {
+            flex-shrink: 0;
+            display: flex; flex-direction: column;
+            align-items: center; gap: 6px;
+            padding-bottom: 20px;
         }
+        .slide-header--left { align-items: flex-start; text-align: left; }
 
-        /* Typography */
-        .slide-title {
-            font-size: clamp(32px, 6vw, 80px);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            line-height: 1.05;
-            color: var(--fg);
-            text-transform: uppercase;
+        .slide-body {
+            flex: 1; width: 100%;
+            display: flex; flex-direction: column;
+            justify-content: center; gap: 16px;
+            overflow: hidden; min-height: 0;
         }
+        .slide-body--center { align-items: center; text-align: center; }
 
-        .slide-title--accent { color: var(--primary); }
-
-        h2 {
-            font-size: clamp(20px, 4vw, 40px);
-            font-weight: 600;
-            color: var(--fg);
+        .slide-footer {
+            flex-shrink: 0;
+            display: flex; justify-content: space-between; align-items: center;
+            padding-top: 12px;
+            /* no border — surfaces differ by fill only */
         }
-
-        p, li {
-            font-size: clamp(14px, 2.5vw, 20px);
-            color: var(--fg-secondary);
-            line-height: 1.6;
+        .footer-section {
+            font-size: 12px; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--fg-muted);
         }
+        .footer-wordmark {
+            font-family: var(--font-wordmark);
+            font-size: 13px; font-weight: 400;
+            text-transform: uppercase; letter-spacing: 0.04em; line-height: 1;
+        }
+        .footer-wordmark .wm-head { color: var(--fg-muted); }
+        .footer-wordmark .wm-eng  { color: var(--primary); }
 
+        /* ── Typography ──────────────────────────────────────────── */
         .eyebrow {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
+            font-size: 0.72rem; font-weight: 600;
+            letter-spacing: 0.14em; text-transform: uppercase;
             color: var(--primary);
         }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .slide { padding: 32px 24px; }
-            .slide-title { font-size: clamp(28px, 5vw, 48px); }
-            h2 { font-size: clamp(20px, 4vw, 32px); }
-            p, li { font-size: clamp(14px, 2.5vw, 18px); }
+        .slide-title {
+            font-size: clamp(30px, 5.8vw, 74px);
+            font-weight: 700; letter-spacing: -0.02em;
+            line-height: 1.04; text-transform: uppercase; color: var(--fg);
         }
-
-        @media (max-width: 480px) {
-            .slide { padding: 24px 16px; }
-            .slide-title { font-size: clamp(22px, 6vw, 36px); }
-            h2 { font-size: clamp(18px, 4.5vw, 28px); }
-            .nav-controls { bottom: 16px; gap: 12px; }
-            .nav-btn { width: 32px; height: 32px; font-size: 14px; }
+        .section-title {
+            font-size: clamp(22px, 3.2vw, 40px);
+            font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--fg);
         }
+        .lead {
+            font-size: clamp(15px, 2vw, 22px);
+            color: var(--fg-secondary); line-height: 1.55;
+        }
+        p { font-size: clamp(13px, 1.6vw, 17px); color: var(--fg-secondary); line-height: 1.55; }
 
-        /* Navigation */
+        /* ── Progress bar ────────────────────────────────────────── */
         .progress-bar {
-            position: fixed;
-            top: 0; left: 0;
-            height: 3px;
-            background: var(--primary);
-            transition: width var(--motion-normal);
-            z-index: 1000;
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: var(--primary); width: 0;
+            transition: width var(--dur-base) var(--ease-out);
+            z-index: 200;
         }
 
-        .nav-controls {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            z-index: 1000;
-        }
-
-        .nav-btn {
-            background: rgba(255,255,255,0.08);
-            border: none;
-            color: var(--fg);
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background var(--motion-fast);
-        }
-
-        .nav-btn:hover { background: rgba(255,255,255,0.16); }
-
-        .slide-counter {
-            color: var(--fg-secondary);
-            font-size: 14px;
-            font-variant-numeric: tabular-nums;
-        }
-
-        /* Reduced motion */
+        /* ── Reduced motion ──────────────────────────────────────── */
         @media (prefers-reduced-motion: reduce) {
-            .slide, .progress-bar, .nav-btn { transition: none; }
-            .animate-fade-up, .animate-scale, .animate-stagger > * { animation: none; opacity: 1; }
+            .slide, .progress-bar { transition: none; }
         }
     </style>
 </head>
-<body>
-    <div class="progress-bar" id="progressBar"></div>
+<!-- Presentations default to dark-mode; presentation.js respects localStorage -->
+<body class="dark-mode">
+<div class="progress-bar" id="progressBar"></div>
 
-    <div class="slide-deck">
+<div class="slide-deck">
 
-        <div class="slide active">
-            <div class="slide-content">
-                <p class="eyebrow">Company / Context</p>
-                <h1 class="slide-title">Title Slide</h1>
-                <p>Subtitle or tagline</p>
-            </div>
+    <!-- data-slide-title  = shown in offcanvas navigator -->
+    <!-- data-slide-section = section grouping shown above title in offcanvas -->
+    <div class="slide active"
+         data-slide-title="Title Slide"
+         data-slide-section="">
+        <div class="slide-header">
+            <p class="eyebrow">Company / Context</p>
+            <h1 class="slide-title">Headline</h1>
         </div>
-
-        <!-- More slides — always wrap content in .slide-content -->
-
+        <div class="slide-body slide-body--center">
+            <p class="lead">Subtitle or tagline</p>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-section">headlessengineer.xyz</span>
+            <span class="footer-wordmark">
+                <span class="wm-head">Headless</span><span class="wm-eng">Engineer</span>
+            </span>
+        </div>
     </div>
 
-    <div class="nav-controls">
-        <button class="nav-btn" onclick="prevSlide()">←</button>
-        <span class="slide-counter"><span id="current">1</span> / <span id="total">1</span></span>
-        <button class="nav-btn" onclick="nextSlide()">→</button>
-    </div>
+    <!-- Add more slides here — each needs data-slide-title -->
 
-    <script>
-        let current = 1;
-        const total = document.querySelectorAll('.slide').length;
-        document.getElementById('total').textContent = total;
+</div>
 
-        function showSlide(n) {
-            if (n < 1) n = 1;
-            if (n > total) n = total;
-            current = n;
-            document.querySelectorAll('.slide').forEach((s, i) => {
-                s.classList.toggle('active', i === n - 1);
-            });
-            document.getElementById('current').textContent = n;
-            document.getElementById('progressBar').style.width = (n / total * 100) + '%';
-        }
-
-        function nextSlide() { showSlide(current + 1); }
-        function prevSlide() { showSlide(current - 1); }
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
-            if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
-        });
-
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-controls')) nextSlide();
-        });
-
-        showSlide(1);
-    </script>
+<!-- Shared presentation runtime: theme/scroll/offcanvas/navigation -->
+<script src="./presentation.js"></script>
 </body>
 </html>
 ```
+
+> **presentation.js is required.** It injects the offcanvas navigator, handles
+> keyboard shortcuts, theme, and scroll mode. It expects `.slide` elements in a
+> `.slide-deck` and a `#progressBar` element.
+
+---
+
+## Keyboard Shortcuts
+
+| Key | Action |
+|---|---|
+| `← / →` | Previous / next slide (presentation mode) |
+| `Space` | Next slide (presentation mode) |
+| `T` | Toggle light / dark theme (persisted to localStorage) |
+| `P` | Toggle presentation / scroll mode |
+| `O` | Toggle offcanvas slide navigator |
+| `Escape` | Close offcanvas |
+| Click (non-button) | Next slide (presentation mode) |
 
 ## Chart.js Integration (npm — no CDN)
 
@@ -281,11 +300,11 @@ new Chart(document.getElementById('chart'), {
         scales: {
             x: {
                 grid: { color: 'rgba(255,255,255,0.05)' },
-                ticks: { color: 'rgba(250,250,250,0.6)', font: { family: 'Inter' } }
+                ticks: { color: '#b3b3b3', font: { family: 'Inter' } }
             },
             y: {
                 grid: { color: 'rgba(255,255,255,0.05)' },
-                ticks: { color: 'rgba(250,250,250,0.6)', font: { family: 'Inter' } }
+                ticks: { color: '#b3b3b3', font: { family: 'Inter' } }
             }
         }
     }
@@ -342,8 +361,12 @@ Use only grayscale or duotone-treated photographs — see `design-system/referen
 | Variable | Value | Usage |
 |---|---|---|
 | `--bg` | `#0a0a0a` | Slide background |
-| `--fg` | `#fafafa` | Primary text |
-| `--fg-secondary` | `rgba(250,250,250,0.6)` | Secondary text, labels |
-| `--surface` | `#141414` | Cards, elevated surfaces |
+| `--surface` | `#141414` | Section / panel surfaces |
+| `--surface-card` | `#000000` | Card and metric backgrounds |
+| `--elevated` | `#1f1f1f` | Badge / pill backgrounds |
+| `--border` | `#2e2e2e` | Table row separators only |
+| `--fg` | `#ffffff` | Primary text |
+| `--fg-secondary` | `#b3b3b3` | Secondary text, labels |
+| `--fg-muted` | `#808080` | Muted text, footer labels (constant in both themes) |
 | `--primary` | `#009999` | Accent: CTAs, highlights, chart lines, progress bar |
 | `--on-primary` | `#ffffff` | Text on `--primary` fills |

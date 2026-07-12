@@ -8,6 +8,7 @@ export interface PersonalInfo {
   location: string;
   email: string;
   github: string | null;
+  linkedin: string | null;
   website: string | null;
   photo: string | null;
   yearsExperience: number;

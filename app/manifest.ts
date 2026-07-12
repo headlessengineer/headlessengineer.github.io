@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'HeadlessEngineer',
     short_name: 'headlessengineer',
-    description: 'Engineered for the problem.',
+    description: 'the head your problem needs.',
     start_url: '/',
     display: 'standalone',
     background_color: '#0e0f0e',

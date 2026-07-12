@@ -63,13 +63,16 @@ output/social-photos/
   <meta name="viewport" content="width={WIDTH}, initial-scale=1.0">
   <style>
     :root {
-      /* headlessengineer tokens — dark theme default */
-      --bg:           #0a0a0a;
-      --fg:           #fafafa;
-      --fg-secondary: rgba(250,250,250,0.6);
-      --primary:      #009999;
-      --on-primary:   #ffffff;
-      --surface:      #141414;
+      /* headlessengineer tokens — dark theme (exact globals.css values) */
+      --bg:            #0a0a0a;
+      --surface:       #141414;
+      --surface-card:  #000000;
+      --elevated:      #1f1f1f;
+      --fg:            #ffffff;
+      --fg-secondary:  #b3b3b3;
+      --fg-muted:      #808080;
+      --primary:       #009999;
+      --on-primary:    #ffffff;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }

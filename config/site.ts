@@ -3,7 +3,7 @@ import type { SiteConfig } from '../types/config';
 export const siteConfig: SiteConfig = {
   name: 'HeadlessEngineer',
 
-  tagline: 'Engineered for the problem.',
+  tagline: 'the head your problem needs.',
 
   url: 'https://headlessengineer.xyz',
 

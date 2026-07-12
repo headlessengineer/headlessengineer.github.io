@@ -22,3 +22,34 @@ export function getAllProfileIds(): string[] {
     return [];
   }
 }
+
+export interface ProfileSummary {
+  id: string;
+  firstName: string;
+  lastName: string;
+  role: string;
+  statement: string;
+  photo: string | null;
+  github: string | null;
+  linkedin: string | null;
+}
+
+export function getAllProfiles(): ProfileSummary[] {
+  const ids = getAllProfileIds();
+  return ids
+    .map((id) => {
+      const profile = getProfile(id);
+      if (!profile) return null;
+      return {
+        id: profile.id,
+        firstName: profile.personal.firstName,
+        lastName: profile.personal.lastName,
+        role: profile.personal.role,
+        statement: profile.about.callout ?? '',
+        photo: profile.personal.photo,
+        github: profile.personal.github,
+        linkedin: profile.personal.linkedin,
+      };
+    })
+    .filter((p): p is ProfileSummary => p !== null);
+}

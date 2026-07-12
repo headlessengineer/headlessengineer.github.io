@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HeadlessEngineer — Pitch Deck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+
+        /* ══ TIER 1 PRIMITIVES ════════════════════════════════════════ */
+        :root {
+            --white:  #ffffff;
+            --n-50:   #fafafa;
+            --n-100:  #f2f2f2;
+            --n-200:  #e0e0e0;
+            --n-300:  #b3b3b3;
+            --n-500:  #808080;
+            --n-600:  #4d4d4d;
+            --n-700:  #2e2e2e;
+            --n-800:  #1f1f1f;
+            --n-900:  #141414;
+            --n-950:  #0a0a0a;
+            --black:  #000000;
+            --accent-brand: #009999;
+        }
+
+        /* ══ TIER 2 SEMANTICS — LIGHT (default, matches globals.css) ═ */
+        :root {
+            --bg:           var(--n-50);
+            --surface:      var(--n-50);
+            --surface-card: var(--white);
+            --elevated:     var(--n-100);
+            --border:       var(--n-200);
+            --fg:           var(--n-950);
+            --fg-secondary: var(--n-600);
+            --fg-muted:     var(--n-500);   /* constant in both themes */
+            --primary:      var(--accent-brand);
+            --on-primary:   var(--white);
+        }
+
+        /* ══ TIER 2 SEMANTICS — DARK (matches globals.css body.dark-mode) */
+        body.dark-mode {
+            --bg:           var(--n-950);
+            --surface:      var(--n-900);
+            --surface-card: var(--black);
+            --elevated:     var(--n-800);
+            --border:       var(--n-700);
+            --fg:           var(--white);
+            --fg-secondary: var(--n-300);
+            /* --fg-muted and --primary stay constant */
+        }
+
+        /* ══ FONT FAMILIES ════════════════════════════════════════════ */
+        :root {
+            --font-sans:     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono:     'JetBrains Mono', 'Fira Code', monospace;
+            --font-wordmark: 'Bitcount Grid Double', var(--font-sans);
+        }
+
+        /* ══ SPACING / RADIUS / MOTION ════════════════════════════════ */
+        :root {
+            --r-sm:       4px;
+            --r-md:       8px;
+            --r-lg:       12px;
+            --r-xl:       16px;
+            --dur-fast:   150ms;
+            --dur-base:   200ms;
+            --dur-slow:   300ms;
+            --ease-out:   ease-out;
+            --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+            --size-touch: 48px;
+            --size-icon:  20px;
+            --pad:        56px;
+        }
+
+        /* ══ RESET ════════════════════════════════════════════════════ */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: var(--r-sm); }
+
+        body {
+            background: var(--bg);
+            color: var(--fg);
+            font-family: var(--font-sans);
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color var(--dur-base) var(--ease-out),
+                        color var(--dur-base) var(--ease-out);
+        }
+        body.scroll-mode { overflow-y: auto; }
+
+        /* ══ DECK CONTAINER (16 : 9) ══════════════════════════════════ */
+        .slide-deck {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        @media (min-width: 769px) {
+            .slide-deck {
+                max-width: calc(100vh * 16 / 9);
+                max-height: calc(100vw * 9 / 16);
+                margin: auto;
+                position: absolute;
+                inset: 0;
+            }
+        }
+
+        /* Scroll mode overrides */
+        body.scroll-mode .slide-deck {
+            position: static;
+            width: 100%;
+            height: auto;
+            max-width: none;
+            max-height: none;
+            overflow: visible;
+        }
+        body.scroll-mode .slide {
+            position: relative;
+            inset: unset;
+            opacity: 1 !important;
+            visibility: visible !important;
+            min-height: 100svh;
+            height: auto;
+            transition: none;
+        }
+
+        /* ══ SLIDE ════════════════════════════════════════════════════ */
+        .slide {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            padding: var(--pad);
+            opacity: 0; visibility: hidden;
+            transition: opacity var(--dur-slow) var(--ease-out);
+            background: var(--bg);
+            overflow: hidden;
+        }
+        .slide.active { opacity: 1; visibility: visible; }
+
+        /* ══ ANATOMY ZONES ════════════════════════════════════════════ */
+        .slide-header {
+            flex-shrink: 0;
+            display: flex; flex-direction: column;
+            align-items: center; gap: 6px;
+            padding-bottom: 20px;
+        }
+        .slide-header--left { align-items: flex-start; text-align: left; }
+
+        .slide-body {
+            flex: 1; width: 100%;
+            display: flex; flex-direction: column;
+            justify-content: center; gap: 16px;
+            overflow: hidden; min-height: 0;
+        }
+        .slide-body--center { align-items: center; text-align: center; }
+
+        .slide-footer {
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between; align-items: center;
+            padding-top: 12px;
+        }
+        .footer-section {
+            font-size: 12px; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--fg-muted);
+        }
+        .footer-wordmark {
+            font-family: var(--font-wordmark);
+            font-size: 13px; font-weight: 400;
+            text-transform: uppercase; letter-spacing: 0.04em; line-height: 1;
+        }
+        .footer-wordmark .wm-head { color: var(--fg-muted); }
+        .footer-wordmark .wm-eng  { color: var(--primary); }
+
+        /* ══ TYPOGRAPHY ═══════════════════════════════════════════════ */
+        .eyebrow {
+            font-size: 0.72rem; font-weight: 600;
+            letter-spacing: 0.14em; text-transform: uppercase;
+            color: var(--primary);
+        }
+        .slide-title {
+            font-size: clamp(30px, 5.8vw, 74px);
+            font-weight: 700; letter-spacing: -0.02em;
+            line-height: 1.04; text-transform: uppercase; color: var(--fg);
+        }
+        .section-title {
+            font-size: clamp(22px, 3.2vw, 40px);
+            font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--fg);
+        }
+        h3 { font-size: clamp(14px, 1.5vw, 18px); font-weight: 600; color: var(--fg); line-height: 1.25; }
+        .lead { font-size: clamp(15px, 2vw, 22px); color: var(--fg-secondary); line-height: 1.55; max-width: 760px; }
+        p { font-size: clamp(13px, 1.6vw, 17px); color: var(--fg-secondary); line-height: 1.55; }
+        .caption { font-size: 11px; color: var(--fg-muted); line-height: 1.4; }
+        .mono { font-family: var(--font-mono); }
+        .accent { color: var(--primary); }
+        .fw-medium { font-weight: 500; }
+        .fg { color: var(--fg); }
+
+        /* ══ WORDMARK (hero slides) ═══════════════════════════════════ */
+        .wordmark {
+            font-family: var(--font-wordmark);
+            font-size: clamp(28px, 5.8vw, 76px);
+            font-weight: 400;
+            text-transform: uppercase; letter-spacing: 0.04em; line-height: 1;
+        }
+        .wordmark .wm-head { color: var(--fg); }
+        .wordmark .wm-eng  { color: var(--primary); }
+        .tagline { font-size: clamp(15px, 2.2vw, 26px); color: var(--fg); font-weight: 500; }
+
+        /* ══ GRIDS ════════════════════════════════════════════════════ */
+        .grid { display: grid; gap: 16px; width: 100%; }
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+        .grid-5 { grid-template-columns: repeat(5, 1fr); }
+        @media (max-width: 768px) {
+            .grid-3, .grid-4, .grid-5 { grid-template-columns: repeat(2, 1fr); }
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+
+        /* ══ CARD (exact site spec) ═══════════════════════════════════ */
+        .card {
+            background: var(--surface-card);
+            border-radius: var(--r-lg); padding: 24px;
+            display: flex; flex-direction: column; gap: 8px; text-align: left;
+            box-shadow: 0 4px 24px rgba(0, 153, 153, 0);
+            transition: box-shadow var(--dur-fast) var(--ease-out),
+                        transform var(--dur-fast) var(--ease-out);
+        }
+        .card:hover {
+            box-shadow: 0 4px 24px rgba(0, 153, 153, 0.18);
+            transform: translateY(-2px);
+        }
+        /* Card label — always teal, matches card[data-title]::before */
+        .card-tag {
+            font-size: 12px; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--primary); margin-bottom: 4px;
+        }
+        .card-value { font-family: var(--font-mono); font-size: 11px; color: var(--primary); }
+        .card--elevated { background: var(--elevated); }
+        .card--centered { align-items: center; text-align: center; justify-content: center; }
+
+        /* ══ METRIC (same surface as card) ═══════════════════════════ */
+        .metric {
+            background: var(--surface-card); border-radius: var(--r-lg);
+            padding: 24px 16px; text-align: center;
+            box-shadow: 0 4px 24px rgba(0, 153, 153, 0);
+            transition: box-shadow var(--dur-fast) var(--ease-out),
+                        transform var(--dur-fast) var(--ease-out);
+        }
+        .metric:hover {
+            box-shadow: 0 4px 24px rgba(0, 153, 153, 0.18);
+            transform: translateY(-2px);
+        }
+        .metric .figure {
+            font-size: clamp(36px, 6vw, 72px); font-weight: 700;
+            color: var(--primary); line-height: 1; letter-spacing: -0.02em;
+        }
+        .metric .label {
+            font-size: clamp(11px, 1.2vw, 14px); color: var(--fg-secondary);
+            margin-top: 8px; line-height: 1.4;
+        }
+
+        /* ══ SPLIT ════════════════════════════════════════════════════ */
+        .split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; width: 100%; }
+        @media (max-width: 768px) { .split { grid-template-columns: 1fr; gap: 20px; } }
+
+        /* ══ PILL / BADGE-NEUTRAL (exact Badge component) ════════════ */
+        .pill-row { display: flex; flex-wrap: wrap; gap: 8px; }
+        .pill {
+            background: var(--elevated); color: var(--fg-secondary);
+            font-size: 12px; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 4px 10px; border-radius: var(--r-sm);
+        }
+
+        /* ══ LISTS ════════════════════════════════════════════════════ */
+        .list-check { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+        .list-check li { display: flex; align-items: flex-start; gap: 10px; font-size: clamp(13px,1.6vw,17px); color: var(--fg-secondary); line-height: 1.5; }
+        .list-check li::before { content: '✓'; color: var(--primary); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+        .list-bullet { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+        .list-bullet li { display: flex; align-items: flex-start; gap: 10px; font-size: clamp(13px,1.6vw,17px); color: var(--fg-secondary); line-height: 1.5; }
+        .list-bullet li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--primary); flex-shrink: 0; margin-top: 8px; }
+
+        /* ══ TABLE ════════════════════════════════════════════════════ */
+        .slide-table { width: 100%; border-collapse: collapse; font-size: clamp(12px,1.45vw,15px); }
+        .slide-table th { text-align: left; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); padding: 8px 14px; border-bottom: 1px solid var(--border); }
+        .slide-table td { padding: 9px 14px; color: var(--fg-secondary); border-bottom: 1px solid rgba(0,0,0,0.04); line-height: 1.4; }
+        body.dark-mode .slide-table td { border-bottom-color: rgba(255,255,255,0.04); }
+        .slide-table tr:last-child td { border-bottom: none; }
+        .slide-table .td-accent { color: var(--fg); font-weight: 500; }
+
+        /* ══ CTA BUTTON (exact primary Button spec) ══════════════════ */
+        .cta-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: var(--primary); color: var(--on-primary);
+            font-weight: 600; font-size: 14px;
+            padding: 12px 20px; border-radius: var(--r-md);
+            min-height: 48px; text-decoration: none;
+            transition: opacity var(--dur-fast) var(--ease-out);
+        }
+        .cta-btn:hover { opacity: 0.88; }
+
+        /* ══ PROGRESS BAR ════════════════════════════════════════════ */
+        .progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px;
+            background: var(--primary); width: 0;
+            transition: width var(--dur-base) var(--ease-out);
+            z-index: 200;
+        }
+
+        /* ══ OFFCANVAS SYSTEM (from OffcanvasNav.module.css) ═════════ */
+        .oc-backdrop {
+            position: fixed; inset: 0;
+            background: var(--black); opacity: 0;
+            z-index: 99; pointer-events: none;
+            transition: opacity var(--dur-base) var(--ease-out);
+        }
+        .oc-backdrop--open { opacity: var(--op-muted, 0.6); pointer-events: auto; }
+
+        .oc-panel {
+            position: fixed; top: 0; right: 0;
+            height: 100%; width: 50vw; max-width: 480px;
+            background: var(--surface);
+            z-index: 100;
+            display: flex; flex-direction: column;
+            transform: translateX(100%); visibility: hidden;
+            transition: transform var(--dur-slow) var(--ease-spring),
+                        visibility 0s var(--dur-slow);
+        }
+        .oc-panel--open {
+            transform: translateX(0); visibility: visible;
+            transition: transform var(--dur-slow) var(--ease-spring), visibility 0s;
+        }
+        @media (max-width: 768px) { .oc-panel { width: 100vw; max-width: none; } }
+
+        /* Offcanvas header */
+        .oc-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 20px; flex-shrink: 0;
+        }
+        .oc-wordmark {
+            font-family: var(--font-wordmark);
+            font-size: 20px; font-weight: 400;
+            letter-spacing: 0.04em; text-transform: uppercase; line-height: 1;
+        }
+        .oc-wm-head { color: var(--fg); }
+        .oc-wm-eng  { color: var(--primary); }
+        .oc-header-actions { display: flex; align-items: center; gap: 2px; }
+
+        /* Icon buttons (from ThemeSwitcher / OffcanvasNav close button) */
+        .oc-icon-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: var(--size-touch); height: var(--size-touch);
+            background: transparent; border: none; cursor: pointer;
+            color: var(--fg); border-radius: var(--r-md);
+            transition: background var(--dur-fast) var(--ease-out);
+        }
+        .oc-icon-btn:hover { background: var(--elevated); }
+        .oc-icon-btn svg {
+            width: var(--size-icon); height: var(--size-icon);
+            stroke: currentColor; stroke-width: 1.5; fill: none;
+        }
+
+        /* Slide navigator list */
+        .oc-nav { flex: 1; overflow-y: auto; padding: 4px 16px 16px; }
+        .oc-slide-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 2px; }
+
+        .oc-slide-btn {
+            width: 100%; display: flex; align-items: center; gap: 14px;
+            padding: 10px 12px; background: transparent; border: none;
+            cursor: pointer; color: var(--fg-secondary); border-radius: var(--r-md);
+            text-align: left;
+            transition: background var(--dur-fast) var(--ease-out),
+                        color var(--dur-fast) var(--ease-out);
+        }
+        .oc-slide-btn:hover { background: var(--elevated); color: var(--fg); }
+        .oc-slide-btn.oc-slide-active { color: var(--primary); }
+
+        .oc-slide-num {
+            font-family: var(--font-mono); font-size: 11px;
+            color: var(--fg-muted); flex-shrink: 0; min-width: 20px;
+        }
+        .oc-slide-active .oc-slide-num { color: var(--primary); }
+
+        .oc-slide-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+        .oc-slide-section {
+            font-size: 10px; font-weight: 600; letter-spacing: 0.08em;
+            text-transform: uppercase; color: var(--fg-muted);
+        }
+        .oc-slide-title-text {
+            font-size: 13px; font-weight: 500; line-height: 1.3;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
+
+        /* Offcanvas footer — keyboard hint */
+        .oc-footer { flex-shrink: 0; padding: 12px 24px 16px; border-top: 1px solid var(--border); }
+        .oc-hint {
+            font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+            text-transform: uppercase; color: var(--fg-muted);
+        }
+
+        /* ══ ANIMATIONS ═══════════════════════════════════════════════ */
+        .slide.active .anim   { animation: fadeUp 0.45s ease-out both; }
+        .slide.active .anim-2 { animation: fadeUp 0.45s ease-out 0.08s both; }
+        .slide.active .anim-3 { animation: fadeUp 0.45s ease-out 0.16s both; }
+        .slide.active .stagger > * { opacity: 0; animation: fadeUp 0.4s ease-out forwards; }
+        .slide.active .stagger > *:nth-child(1) { animation-delay: 0.06s; }
+        .slide.active .stagger > *:nth-child(2) { animation-delay: 0.12s; }
+        .slide.active .stagger > *:nth-child(3) { animation-delay: 0.18s; }
+        .slide.active .stagger > *:nth-child(4) { animation-delay: 0.24s; }
+        .slide.active .stagger > *:nth-child(5) { animation-delay: 0.30s; }
+        .slide.active .stagger > *:nth-child(6) { animation-delay: 0.36s; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ══ RESPONSIVE ═══════════════════════════════════════════════ */
+        @media (max-width: 768px) {
+            :root { --pad: 28px 22px; }
+        }
+
+        /* ══ REDUCED MOTION ═══════════════════════════════════════════ */
+        @media (prefers-reduced-motion: reduce) {
+            .slide, .progress-bar, .oc-panel, .oc-backdrop { transition: none; }
+            .slide.active .anim, .slide.active .anim-2, .slide.active .anim-3,
+            .slide.active .stagger > * { animation: none; opacity: 1; }
+        }
+
+    </style>
+</head>
+<body class="dark-mode">
+<div class="progress-bar" id="progressBar"></div>
+
+<div class="slide-deck">
+
+    <!-- ── 1 · Title / Hook ──────────────────────────────────────────── -->
+    <div class="slide active"
+         data-slide-title="Opening"
+         data-slide-section="">
+        <div class="slide-body slide-body--center" style="gap:20px;">
+            <div class="anim">
+                <p class="eyebrow" style="margin-bottom:18px;">Technology Consultancy · Berlin</p>
+                <div class="wordmark"><span class="wm-head">Headless</span><span class="wm-eng">Engineer</span></div>
+                <p class="tagline" style="margin-top:14px;">the head your problem needs.</p>
+            </div>
+            <p class="lead anim-2" style="margin-top:10px; text-align:center;">
+                Senior minds, the right technology, and pragmatic engineering —<br>
+                pointed at the problems that don't have easy answers.
+            </p>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-section">headlessengineer.xyz</span>
+            <span class="footer-wordmark"><span class="wm-head">Headless</span><span class="wm-eng">Engineer</span></span>
+        </div>
+    </div>
+
+    <!-- ── 2 · The Problem ───────────────────────────────────────────── -->
+    <div class="slide"
+         data-slide-title="The Problem"
+         data-slide-section="Problem">
+        <div class="slide-header anim">
+            <p class="eyebrow">The Problem</p>
+            <h2 class="section-title">Most consultancies sell you their stack.</h2>
+        </div>
+        <div class="slide-body">
+            <p class="lead anim-2" style="text-align:center;">
+                You bring a business problem. You get the tool they already know.
+                Six months later the architecture buckles, the migration stalls,
+                and the AI pilot never leaves the pitch deck.
+            </p>
+            <div class="grid grid-3 stagger" style="margin-top:8px;">
+                <div class="card">
+                    <h3>Tool-first advice</h3>
+                    <p>The recommendation follows the vendor's product line, not your budget, timeline, or team.</p>
+                </div>
+                <div class="card">
+                    <h3>Diagrams, not systems</h3>
+                    <p>Architecture that presents well but was never designed to actually be built.</p>
+                </div>
+                <div class="card">
+                    <h3>Demoware AI</h3>
+                    <p>Proofs-of-concept that impress in a meeting and remove zero real manual work.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-section">Problem</span>
+            <span class="footer-wordmark"><span class="wm-head">Headless</span><span class="wm-eng">Engineer</span></span>
+        </div>
+    </div>
+
+    <!-- ── 3 · Cost of Inaction ──────────────────────────────────────── -->
+    <div class="slide"
+         data-slide-title="Cost of Inaction"
+         data-slide-section="Problem">
+        <div class="slide-header anim">
+            <p class="eyebrow">The Cost of Waiting</p>
+            <h2 class="section-title">Every quarter without the right architecture<br>compounds the debt.</h2>
+        </div>
+        <div class="slide-body">
+            <div class="split stagger">
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                    <ul class="list-check">
+                        <li>Legacy systems block new features — engineering teams spend 60–80% of capacity on maintenance, not delivery.</li>
+                        <li>Architecture debt scales faster than the team — the later you fix it, the larger the migration.</li>
+                        <li>AI pilots that never reach production spend real money and lose internal credibility for the next initiative.</li>
+                        <li>Stack-specific consultants lock you in — every engagement widens the dependency.</li>
+                    </ul>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:12px;">
+                    <div class="card card--elevated card--centered">
+                        <p class="caption" style="text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">The alternative</p>
+                        <p class="fg fw-medium" style="font-size:clamp(13px,1.7vw,18px);text-align:center;">
+                            Start with the business outcome.<br>Work backward to the stack.<br>Ship systems that hold up.
+                        </p>
+                    </div>
+                    <div class="card card--elevated card--centered">
+                        <p class="caption" style="text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Our stance</p>
+                        <p class="fg fw-medium" style="font-size:clamp(13px,1.7vw,18px);text-align:center;">
+                            Clarity first.<br>Outcomes first.<br>Never hype.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-section">Problem</span>
+            <span class="footer-wordmark"><span class="wm-head">Headless</span><span class="wm-eng">Engineer</span></span>
+        </div>
+    </div>
+
+    <!-- ── 4 · Why "Headless" / Solution ─────────────────────────────── -->
+    <div class="slide"
+         data-slide-title="Why Headless"
+         data-slide-section="Solution">
+        <div class="slide-header anim">
+            <p class="eyebrow">Why "Headless"</p>
+            <h2 class="section-title">The rigor is constant. The stack is <span class="accent">swappable.</span></h2>
+        </div>
+        <div class="slide-body slide-body--center">
+            <p class="lead anim-2" style="text-align:center;">
+                A headless system attaches to any front end — the core stays constant, the head adapts.
+                We apply that to engineering: senior rigor that adopts whatever technology the problem needs.
+                We're headless so we can be <strong class="accent">the head your problem needs.</strong>
+            </p>
+            <div class="pill-row anim-3" style="justify-content:center;margin-top:10px;">
+                <span class="pill">AI-native</span>
+                <span class="pill">Stack-agnostic</span>
+                <span class="pill">Outcome-led</span>
+                <span class="pill">Senior · calm · precise</span>
+                <span class="pill">Built, not just diagrammed</span>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-section">Solution</span>
+            <span class="footer-wordmark"><span class="wm-head">Headless</span><span class="wm-eng">Engineer</span></span>
+        </div>
+    </div>
+
+    <!-- ── 5 · How We Help ───────────────────────────────────────────── -->
+    <div class="slide"
+         data-slide-title="How We Help"
+         data-slide-section="Services">
+        <div class="slide-header anim">
+            <p class="eyebrow">How We Help</p>
+            <h2 class="section-title">Problems we're built to solve</h2>
+        </div>
+        <div class="slide-body">
+            <div class="grid grid-3 stagger">
+                <div class="card">
+                    <span class="card-tag">Strategy</span>
+                    <h3>You have a business problem, not a spec</h3>
+                    <p>We assess what's actually broken and design a roadmap that fits your timeline, budget, and risk appetite.</p>
+                </div>
+                <div class="card">
+                    <span class="card-tag">Architecture</span>
+                    <h3>Your architecture needs to survive scale</h3>
+                    <p>Systems that hold together as they grow — from one platform to org-wide technology coherence.</p>
+                </div>
+                <div class="card">
+                    <span class="card-tag">Build</span>
+                    <h3>You need it built, not just diagrammed</h3>
+                    <p>We ship production software ourselves and bring in vetted specialists for depth we don't carry in-house.</p>
+                </div>
+                <div class="card">
+                    <span class="card-tag">Migration</span>
+                    <h3>Legacy is holding the business back</h3>
+                    <p>Incremental strangler-fig migration off systems that can't keep up — no risky big-bang rewrite.</p>
+                </div>
+                <div class="card">
+                    <span class="card-tag">AI</span>
+                    <h3>AI should do real work, not a demo</h3>
+                    <p>Agentic systems that remove actual manual work — built to run in production, not to pitch.</p>
+                </div>
+                <div class="card card--elevated card--centered">
+                    <p class="fg fw-medium" style="font-size:clamp(12px,1.5vw,16px);text-align:center;">
+                        Tell us the problem, not the service you think you need — we'll shape the right engagement together.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-section">Services</span>
+            <span class="footer-wordmark"><span class="wm-head">Headless</span><span class="wm-eng">Engineer</span></span>
+        </div>
+    </div>
+
+    <!-- ── 6 · Service Catalogue + Engagement Models ─────────────────── -->
+    <div class="slide"
+         data-slide-title="Service Catalogue"
+         data-slide-section="Services">
+        <div class="slide-header anim">
+            <p class="eyebrow">Service Catalogue</p>
+            <h2 class="section-title">Four categories. Five engagement shapes.</h2>
+        </div>
+        <div class="slide-body">
+            <div class="grid grid-4 stagger" style="margin-bottom:4px;">
+                <div class="card">
+                    <span class="card-tag">Strategy &amp; Architecture</span>
+                    <p class="fg">Technology Strategy &amp; Discovery</p>
+                    <p class="fg">Solution Architecture</p>
+                    <p class="fg">Enterprise Architecture</p>
+                </div>
+                <div class="card">
+                    <span class="card-tag">Build &amp; Delivery</span>
+                    <p class="fg">Custom Software Engineering</p>
+                    <p class="fg">Platform Modernisation &amp; Migration</p>
+                </div>
+                <div class="card">
+                    <span class="card-tag">AI &amp; Automation</span>
+                    <p class="fg">AI &amp; Automation Consulting</p>
+                    <p class="card-value" style="margin-top:4px;">PoC → production pipeline</p>
+                </div>
+                <div class="card">
+                    <span class="card-tag">Leadership &amp; Team</span>
+                    <p class="fg">Fractional CTO / Technical Advisory</p>
+                    <p class="card-value" style="margin-top:4px;">Team augmentation (on request)</p>
+                </div>
+            </div>
+            <table class="slide-table anim-3">
+                <thead>
+                    <tr><th>Engagement model</th><th>Typical service</th><th>Shape</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td class="td-accent">Discovery sprint (2–4 wks)</td><td>Technology Strategy &amp; Discovery</td><td>Fixed-scope diagnostic → roadmap</td></tr>
+                    <tr><td class="td-accent">Fixed-scope engagement</td><td>Solution Architecture</td><td>Defined architecture or build deliverable</td></tr>
+                    <tr><td class="td-accent">Embedded delivery</td><td>Custom Software Engineering</td><td>Team extension or scoped build</td></tr>
+                    <tr><td class="td-accent">Phased delivery</td><td>Platform Modernisation &amp; Migration</td><td>Incremental migration roadmap + build</td></tr>
+                    <tr><td class="td-accent">Advisory retainer</td><td>Enterprise Architecture · Fractional CTO</td><td>Part-time senior oversight</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-section">Services</span>
+            <span class="footer-wordmark"><span class="wm-head">Headless</span><span class="wm-eng">Engineer</span></span>
+        </div>
+    </div>
+
+    <!-- ── 7 · How We're Staffed ──────────────────────────────────────── -->
+    <div class="slide"
+         data-slide-title="How We're Staffed"
+         data-slide-section="Model">
+        <div class="slide-header anim">
+            <p class="eyebrow">How We're Staffed</p>
+            <h2 class="section-title">A senior core. A network built to scale.</h2>
+        </div>
+        <div class="slide-body">
+            <div class="split">
+                <div class="anim-2" style="display:flex;flex-direction:column;gap:14px;">
+                    <p>A senior architect leads every engagement as the single technical point of contact. We bring in vetted specialists — frontend, mobile, data, DevOps — only where a problem needs them.</p>
+                    <p class="fg fw-medium">You're never paying for expertise you don't need, and never handed a generalist stretched thin across a domain they don't own.</p>
+                    <ul class="list-bullet" style="margin-top:4px;">
+                        <li>Not a one-person shop</li>
+                        <li>Not a body-shop</li>
+                        <li>One senior point of accountability on every engagement</li>
+                    </ul>
+                </div>
+                <div class="grid stagger" style="gap:12px;">
+                    <div class="card">
+                        <h3>Senior architect core</h3>
+                        <p>Owns architecture, quality, and coherence end-to-end on every engagement.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Vetted specialist network</h3>
+                        <p>Depth brought in per problem — not forced through one person's skill set.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Growing into a standing team</h3>
+                        <p>Assembled per engagement today; maturing into a standing multi-discipline team.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-section">Model</span>
+            <span class="footer-wordmark"><span class="wm-head">Headless</span><span class="wm-eng">Engineer</span></span>
+        </div>
+    </div>
+
+    <!-- ── 8 · Where We Go Deep ───────────────────────────────────────── -->
+    <div class="slide"
+         data-slide-title="Where We Go Deep"
+         data-slide-section="Capabilities">
+        <div class="slide-header anim">
+            <p class="eyebrow">Where We Go Deep</p>
+            <h2 class="section-title">Domains we bring genuine judgment to</h2>
+        </div>
+        <div class="slide-body">
+            <div class="grid grid-5 stagger">
+                <div class="card">
+                    <h3>Enterprise &amp; Solution Architecture</h3>
+                    <p class="card-value">System Design · API-First · DDD · Roadmapping</p>
+                </div>
+                <div class="card">
+                    <h3>Distributed &amp; Cloud-Native Systems</h3>
+                    <p class="card-value">Go · Kafka · Kubernetes · AWS</p>
+                </div>
+                <div class="card">
+                    <h3>Digital Commerce Platforms</h3>
+                    <p class="card-value">Spryker · Magento · Adobe · SAP · IBM OMS</p>
+                </div>
+                <div class="card">
+                    <h3>AI &amp; Agentic Systems</h3>
+                    <p class="card-value">Claude API · MCP · n8n · CrewAI</p>
+                </div>
+                <div class="card">
+                    <h3>Technical &amp; Delivery Leadership</h3>
+                    <p class="card-value">Fractional CTO · Mentorship · Agile</p>
+                </div>
+            </div>
+            <p class="caption anim-3" style="text-align:center;margin-top:4px;">
+                Commerce is a specialty, not a boundary — certified depth built over 12+ years across B2B, B2C, and D2C.
+            </p>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-section">Capabilities</span>
+            <span class="footer-wordmark"><span class="wm-head">Headless</span><span class="wm-eng">Engineer</span></span>
+        </div>
+    </div>
+
+    <!-- ── 9 · How We Work ────────────────────────────────────────────── -->
+    <div class="slide"
+         data-slide-title="How We Work"
+         data-slide-section="Principles">
+        <div class="slide-header anim">
+            <p class="eyebrow">What It's Like to Work With Us</p>
+            <h2 class="section-title">We raise the standard, not just the output.</h2>
+        </div>
+        <div class="slide-body">
+            <div class="grid grid-3 stagger">
+                <div class="card">
+                    <h3>Scope around the problem, not our stack</h3>
+                    <p>Technology-agnostic recommendations and honest build-vs-buy calls — even when the right answer isn't in our specialisation.</p>
+                </div>
+                <div class="card">
+                    <h3>Ownership, not just tasks</h3>
+                    <p>ADRs, incident ownership, and thinking past launch to six months after go-live.</p>
+                </div>
+                <div class="card">
+                    <h3>Test before we ship</h3>
+                    <p>TDD, BDD, integration and acceptance testing — and we establish these practices in the teams we join.</p>
+                </div>
+                <div class="card">
+                    <h3>AI frees judgment, not replaces it</h3>
+                    <p>Automation handles the repetitive parts so engineers focus on design and architecture.</p>
+                </div>
+                <div class="card">
+                    <h3>Leave the codebase better</h3>
+                    <p>Code review, engineering culture, and compounding standards — a codebase should be in better shape after we've worked on it.</p>
+                </div>
+                <div class="card card--elevated card--centered">
+                    <p class="fg fw-medium" style="font-size:clamp(12px,1.5vw,16px);text-align:center;">
+                        Clarity first. Outcomes first. Never hype.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-section">Principles</span>
+            <span class="footer-wordmark"><span class="wm-head">Headless</span><span class="wm-eng">Engineer</span></span>
+        </div>
+    </div>
+
+    <!-- ── 10 · Proof ─────────────────────────────────────────────────── -->
+    <div class="slide"
+         data-slide-title="Proof"
+         data-slide-section="Proof">
+        <div class="slide-header anim">
+            <p class="eyebrow">Proof</p>
+            <h2 class="section-title">Enterprise scale, shipped.</h2>
+        </div>
+        <div class="slide-body">
+            <div class="grid grid-4 stagger">
+                <div class="metric"><div class="figure">12+</div><div class="label">Years shipping enterprise systems</div></div>
+                <div class="metric"><div class="figure">26</div><div class="label">Countries in production</div></div>
+                <div class="metric"><div class="figure">9–15</div><div class="label">Engineer teams led</div></div>
+                <div class="metric"><div class="figure">0</div><div class="label">Problems declined because of stack</div></div>
+            </div>
+            <div class="grid grid-2 stagger" style="margin-top:4px;">
+                <div class="card">
+                    <span class="card-tag">Multi-country Distributed OMS</span>
+                    <h3>65% faster deployments</h3>
+                    <p>Pipeline automation and infrastructure-as-code across a multi-country rollout cut deployment time by two-thirds.</p>
+                </div>
+                <div class="card">
+                    <span class="card-tag">AI &amp; Automation</span>
+                    <h3>PoC → production AI engagement</h3>
+                    <p>An AI documentation-automation pilot taken all the way to a live client engagement — not just a demo.</p>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-section">Proof</span>
+            <span class="footer-wordmark"><span class="wm-head">Headless</span><span class="wm-eng">Engineer</span></span>
+        </div>
+    </div>
+
+    <!-- ── 11 · Founder & Credentials ────────────────────────────────── -->
+    <div class="slide"
+         data-slide-title="Karan Popat"
+         data-slide-section="Founder">
+        <div class="slide-header anim">
+            <p class="eyebrow">Behind the Work</p>
+            <h2 class="section-title">Karan Popat — Founder &amp; Lead Architect</h2>
+        </div>
+        <div class="slide-body">
+            <div class="split">
+                <div class="anim-2" style="display:flex;flex-direction:column;gap:14px;">
+                    <p>12+ years building enterprise platforms — from greenfield commerce backends to distributed Go microservices across 26 countries — currently leading engineering teams of 9–15 at Accenture Song in Berlin.</p>
+                    <ul class="list-bullet">
+                        <li>12+ years enterprise software engineering</li>
+                        <li>Lead Software Engineer — Technology Architect, Accenture Song</li>
+                        <li>Spryker, Magento 2, SAP Commerce Cloud, IBM Sterling OMS</li>
+                        <li>Go, PHP, Java, TypeScript — stack-agnostic by career</li>
+                        <li>Berlin, Germany · English · German · Hindi · Gujarati</li>
+                    </ul>
+                </div>
+                <div class="grid grid-2 stagger" style="gap:12px;">
+                    <div class="card"><span class="card-tag">Anthropic</span><h3>Claude Code in Action</h3></div>
+                    <div class="card"><span class="card-tag">Accenture</span><h3>Reinvention with Agentic AI</h3></div>
+                    <div class="card"><span class="card-tag">Adobe</span><h3>Magento Commerce Developer</h3></div>
+                    <div class="card"><span class="card-tag">Spryker · AWS · Salesforce</span><h3>Foundations · Cloud · Associate</h3></div>
+                </div>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-section">Founder</span>
+            <span class="footer-wordmark"><span class="wm-head">Headless</span><span class="wm-eng">Engineer</span></span>
+        </div>
+    </div>
+
+    <!-- ── 12 · CTA / Closing ─────────────────────────────────────────── -->
+    <div class="slide"
+         data-slide-title="Get In Touch"
+         data-slide-section="">
+        <div class="slide-body slide-body--center" style="gap:18px;">
+            <div class="anim">
+                <div class="wordmark" style="font-size:clamp(22px,4.2vw,52px);">
+                    <span class="wm-head">Headless</span><span class="wm-eng">Engineer</span>
+                </div>
+            </div>
+            <h2 class="section-title anim-2" style="max-width:800px;text-align:center;">
+                Have a problem worth solving?
+            </h2>
+            <p class="lead anim-3" style="text-align:center;max-width:680px;">
+                A strategy question, an architecture that needs to hold up, a platform
+                that needs modernising, or a team that needs senior judgment —
+                we're happy to talk it through.
+            </p>
+            <div class="anim" style="display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:8px;">
+                <a class="cta-btn" href="mailto:contact@headlessengineer.xyz">Start the conversation →</a>
+                <span class="mono" style="font-size:clamp(12px,1.5vw,16px);color:var(--fg);">contact@headlessengineer.xyz</span>
+                <span style="font-size:clamp(11px,1.3vw,14px);color:var(--fg-secondary);">
+                    headlessengineer.xyz &nbsp;·&nbsp; linkedin.com/in/headlessengineer
+                </span>
+            </div>
+        </div>
+        <div class="slide-footer">
+            <span class="footer-section">contact@headlessengineer.xyz</span>
+            <span class="footer-wordmark"><span class="wm-head">Headless</span><span class="wm-eng">Engineer</span></span>
+        </div>
+    </div>
+
+</div><!-- /.slide-deck -->
+
+<script src="./presentation.js"></script>
+</body>
+</html>

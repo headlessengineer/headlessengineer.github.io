@@ -4,7 +4,7 @@ import { siteConfig } from '../../config/site';
 describe('siteConfig - SPEC-001 acceptance criteria', () => {
   it('AC-1: name is "HeadlessEngineer" and tagline is the full rebranded copy', () => {
     expect(siteConfig.name).toBe('HeadlessEngineer');
-    expect(siteConfig.tagline).toBe('Engineered for the problem.');
+    expect(siteConfig.tagline).toBe('the head your problem needs.');
   });
 
   it('AC-3: navigation has exactly 6 items with correct labels, hrefs, and enabled flags in order', () => {

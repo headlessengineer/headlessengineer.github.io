@@ -1,0 +1,111 @@
+/* ── Shared ── */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+}
+
+.sectionHead {
+  padding: var(--space-16) var(--space-6) 0;
+  margin-bottom: var(--space-10);
+}
+
+.eyebrow {
+  display: block;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: var(--space-2);
+}
+
+.heading {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* ── Philosophy — Panel grid ── */
+.philosophy {
+  min-height: var(--section-h-third);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hwwContainer {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: var(--space-16) var(--space-6);
+}
+
+.panelHeading {
+  margin-top: var(--space-3);
+  margin-bottom: 0;
+}
+
+.philosophyList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+}
+
+.philosophyItem {
+  display: grid;
+  grid-template-columns: 1.5ch 1fr;
+  gap: var(--space-4);
+  align-items: start;
+}
+
+.philosophyMarker {
+  color: var(--primary);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-base);
+}
+
+.philosophyText {
+  color: var(--fg-secondary);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+/* ── How We Work — ServiceCard rows ── */
+.howWeWork {
+  min-height: var(--section-h-half);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--surface);
+}
+
+/* ── Team — Cinema grid ── */
+.teamSection {
+  min-height: var(--section-h-half);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.teamGrid {
+  width: 100%;
+  padding: 0 var(--space-6) var(--space-16);
+}
+
+@media (max-width: 768px) {
+  .sectionHead {
+    padding: var(--space-12) var(--space-4) 0;
+  }
+
+  .hwwContainer {
+    padding: var(--space-12) var(--space-4);
+  }
+
+  .teamGrid {
+    padding-inline: var(--space-4);
+  }
+}

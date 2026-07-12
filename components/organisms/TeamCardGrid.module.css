@@ -1,0 +1,665 @@
+/* ── Outer wrapper — explicit width so margin-inline:auto on ancestor doesn't collapse the flex item ── */
+.wrapper {
+  width: 100%;
+}
+
+/* ── Grid ── */
+.grid {
+  display: grid;
+  gap: var(--space-6);
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .grid[data-variant="1"],
+  .grid[data-variant="3"],
+  .grid[data-variant="5"] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid[data-variant="4"] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid[data-variant="1"],
+  .grid[data-variant="3"] {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .grid[data-variant="4"] {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid[data-variant="5"] {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Card link overlay (all variants) ── */
+.card {
+  position: relative;
+  /* isolation: isolate creates a self-contained stacking context so child
+     z-indexes don't bleed out and socials (z-index:2) correctly beat
+     cardLink (z-index:1) without the overlay creating a trap */
+  isolation: isolate;
+}
+
+.cardLink {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  text-transform: none;
+}
+
+.socials {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: var(--space-3);
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-touch);
+  height: var(--size-touch);
+  color: var(--fg-muted);
+  border-radius: var(--radius-md);
+  transition: color var(--duration-fast) var(--ease-out);
+  text-transform: none;
+}
+
+.socialLink:hover {
+  color: var(--primary);
+}
+
+/* ── VARIANT 1 — Minimal Precision ── */
+.card[data-variant="1"] {
+  background: var(--surface-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition:
+    box-shadow var(--duration-base) var(--ease-spring),
+    transform var(--duration-base) var(--ease-spring);
+}
+
+.card[data-variant="1"]:hover {
+  box-shadow: 0 4px 24px rgba(0, 153, 153, 0.18);
+  transform: translateY(-2px);
+}
+
+.card[data-variant="1"] .photoWrap {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--elevated);
+  margin-bottom: var(--space-6);
+  flex-shrink: 0;
+}
+
+.card[data-variant="1"] .photo {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.card[data-variant="1"] .name {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--fg);
+  margin-bottom: var(--space-1);
+}
+
+.card[data-variant="1"] .role {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--primary);
+  margin-bottom: var(--space-6);
+}
+
+.card[data-variant="1"] .divider {
+  width: 32px;
+  height: 1px;
+  background: var(--border);
+  margin: 0 auto var(--space-6);
+}
+
+.card[data-variant="1"] .statement {
+  font-size: var(--font-size-sm);
+  color: var(--fg-secondary);
+  font-style: italic;
+  line-height: var(--line-height-relaxed);
+  flex: 1;
+}
+
+.card[data-variant="1"] .socials {
+  margin-top: var(--space-6);
+  justify-content: center;
+}
+
+/* ── VARIANT 2 — Horizontal Split ── */
+.card[data-variant="2"] {
+  background: var(--surface-card);
+  border-radius: var(--radius-md);
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 220px;
+  overflow: hidden;
+  transition:
+    box-shadow var(--duration-base) var(--ease-spring),
+    transform var(--duration-base) var(--ease-spring);
+}
+
+.card[data-variant="2"]:hover {
+  box-shadow: 0 4px 24px rgba(0, 153, 153, 0.18);
+  transform: translateY(-2px);
+}
+
+.card[data-variant="2"] .accentBar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--primary);
+  transition: width var(--duration-base) var(--ease-spring);
+  z-index: 0;
+}
+
+.card[data-variant="2"]:hover .accentBar {
+  width: 5px;
+}
+
+.card[data-variant="2"] .photoWrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.card[data-variant="2"] .photo {
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-spring),
+              filter var(--duration-slow) ease;
+  filter: grayscale(40%);
+}
+
+.card[data-variant="2"]:hover .photo {
+  transform: scale(1.04);
+  filter: grayscale(0%);
+}
+
+.card[data-variant="2"] .content {
+  padding: var(--space-8) var(--space-8) var(--space-6) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card[data-variant="2"] .role {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--primary);
+  margin-bottom: var(--space-2);
+}
+
+.card[data-variant="2"] .name {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--fg);
+  margin-bottom: var(--space-6);
+}
+
+.card[data-variant="2"] .statement {
+  font-size: var(--font-size-sm);
+  color: var(--fg-secondary);
+  line-height: var(--line-height-relaxed);
+  flex: 1;
+  border-left: 2px solid var(--border);
+  padding-left: var(--space-4);
+  font-style: italic;
+  margin: 0 0 var(--space-6);
+}
+
+.card[data-variant="2"] .socials {
+  gap: var(--space-1);
+}
+
+@media (max-width: 639px) {
+  .card[data-variant="2"] {
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px auto;
+  }
+  .card[data-variant="2"] .accentBar {
+    width: 100%;
+    height: 3px;
+    bottom: auto;
+    right: 0;
+  }
+  .card[data-variant="2"]:hover .accentBar {
+    width: 100%;
+    height: 5px;
+  }
+}
+
+/* ── VARIANT 3 — Noir (Dark Inverted) ── */
+.card[data-variant="3"] {
+  background: var(--n-950);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10) var(--space-6) var(--space-6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition:
+    box-shadow var(--duration-base) var(--ease-spring),
+    transform var(--duration-base) var(--ease-spring);
+}
+
+.card[data-variant="3"]:hover {
+  box-shadow:
+    0 0 0 1px var(--primary),
+    0 4px 32px rgba(0, 153, 153, 0.22);
+  transform: translateY(-2px);
+}
+
+.card[data-variant="3"] .photoWrap {
+  width: 96px;
+  height: 96px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--n-800);
+  margin-bottom: var(--space-6);
+  outline: 2px solid var(--n-700);
+  outline-offset: 2px;
+  transition: outline-color var(--duration-base) ease;
+  flex-shrink: 0;
+}
+
+.card[data-variant="3"]:hover .photoWrap {
+  outline-color: var(--primary);
+}
+
+.card[data-variant="3"] .photo {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.card[data-variant="3"] .name {
+  color: var(--white);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  margin-bottom: var(--space-1);
+}
+
+.card[data-variant="3"] .role {
+  color: var(--primary);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  margin-bottom: var(--space-8);
+}
+
+.card[data-variant="3"] .statement {
+  color: var(--n-300);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  flex: 1;
+  font-style: italic;
+}
+
+.card[data-variant="3"] .socials {
+  margin-top: var(--space-8);
+  justify-content: center;
+}
+
+.card[data-variant="3"] .socialLink {
+  color: var(--n-500);
+}
+
+.card[data-variant="3"] .socialLink:hover {
+  color: var(--primary);
+}
+
+/* ── VARIANT 4 — Cinema (Overlay Hero) ── */
+.card[data-variant="4"] {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  cursor: pointer;
+}
+
+.card[data-variant="4"] .photoWrap {
+  position: absolute;
+  inset: 0;
+  transition: transform var(--duration-slow) var(--ease-spring);
+  overflow: hidden;
+}
+
+.card[data-variant="4"]:hover .photoWrap {
+  transform: scale(1.05);
+}
+
+.card[data-variant="4"] .photo {
+  object-fit: cover;
+  filter: grayscale(25%);
+  transition: filter var(--duration-slow) ease;
+}
+
+.card[data-variant="4"]:hover .photo {
+  filter: grayscale(0%);
+}
+
+.card[data-variant="4"] .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.93) 0%,
+    rgba(0, 0, 0, 0.45) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: var(--space-8);
+  transition: background var(--duration-slow) ease;
+  /* no z-index: keeps this element out of the stacking-context layer so that
+     .socials (z-index:2 from base) beats .cardLink (z-index:1) correctly */
+}
+
+.card[data-variant="4"]:hover .overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.96) 0%,
+    rgba(0, 0, 0, 0.6) 55%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+}
+
+.card[data-variant="4"] .role {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--primary);
+  margin-bottom: var(--space-1);
+}
+
+.card[data-variant="4"] .name {
+  color: var(--white);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  margin-bottom: var(--space-3);
+}
+
+.card[data-variant="4"] .statement {
+  color: var(--n-300);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  font-style: italic;
+  transition:
+    max-height var(--duration-slow) var(--ease-spring),
+    opacity var(--duration-slow) ease,
+    margin-bottom var(--duration-slow) ease;
+  margin-bottom: 0;
+}
+
+.card[data-variant="4"]:hover .statement {
+  max-height: 5rem;
+  opacity: 1;
+  margin-bottom: var(--space-3);
+}
+
+.card[data-variant="4"] .socials {
+  margin-top: var(--space-4);
+  /* z-index:2 from base .socials is sufficient — overlay has no z-index,
+     so these socials participate in the card's stacking context and beat
+     the cardLink at z-index:1 */
+}
+
+.card[data-variant="4"] .socialLink {
+  color: var(--n-500);
+}
+
+.card[data-variant="4"] .socialLink:hover {
+  color: var(--primary);
+}
+
+/* ── VARIANT 5 — Terminal ── */
+.card[data-variant="5"] {
+  background: var(--n-900);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  font-family: var(--font-code);
+  transition:
+    box-shadow var(--duration-base) var(--ease-spring),
+    transform var(--duration-base) var(--ease-spring);
+}
+
+.card[data-variant="5"]:hover {
+  box-shadow:
+    0 0 0 1px var(--primary),
+    0 4px 32px rgba(0, 153, 153, 0.18);
+  transform: translateY(-2px);
+}
+
+.termHeader {
+  background: var(--n-950);
+  padding: var(--space-3) var(--space-4);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.termDots {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.termDot {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+  background: var(--n-700);
+  transition: background var(--duration-fast) ease;
+}
+
+.card[data-variant="5"]:hover .termDot:nth-child(1) { background: #e55555; }
+.card[data-variant="5"]:hover .termDot:nth-child(2) { background: #cccc00; }
+.card[data-variant="5"]:hover .termDot:nth-child(3) { background: var(--primary); }
+
+.termTitle {
+  font-size: var(--font-size-xs);
+  color: var(--n-500);
+  font-family: var(--font-code);
+}
+
+.termBody {
+  padding: var(--space-6);
+}
+
+.card[data-variant="5"] .photoWrap {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--n-800);
+  margin-bottom: var(--space-4);
+  flex-shrink: 0;
+  filter: grayscale(100%) contrast(0.8);
+  transition: filter var(--duration-slow) ease;
+}
+
+.card[data-variant="5"]:hover .photoWrap {
+  filter: grayscale(40%) contrast(1);
+}
+
+.card[data-variant="5"] .photo {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.card[data-variant="5"] .prompt {
+  font-size: var(--font-size-xs);
+  color: var(--primary);
+  font-family: var(--font-code);
+  margin-bottom: var(--space-2);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.card[data-variant="5"] .name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--white);
+  font-family: var(--font-code);
+  margin-bottom: var(--space-1);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.card[data-variant="5"] .role {
+  font-size: var(--font-size-xs);
+  color: var(--n-500);
+  font-family: var(--font-code);
+  margin-bottom: var(--space-4);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.card[data-variant="5"] .statement {
+  font-size: var(--font-size-xs);
+  color: var(--n-300);
+  font-family: var(--font-code);
+  margin-bottom: var(--space-4);
+  line-height: var(--line-height-relaxed);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.card[data-variant="5"] .statement::before {
+  content: '// ';
+  color: var(--n-600);
+}
+
+.card[data-variant="5"] .socials {
+  border-top: 1px solid var(--n-800);
+  padding-top: var(--space-4);
+  gap: var(--space-1);
+}
+
+.card[data-variant="5"] .socialLink {
+  color: var(--n-600);
+  width: 36px;
+  height: 36px;
+}
+
+.card[data-variant="5"] .socialLink:hover {
+  color: var(--primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card[data-variant="4"]:hover .photoWrap {
+    transform: none;
+  }
+  .card[data-variant="2"]:hover .photo {
+    transform: none;
+  }
+}
+
+/* ── Card reveal animation (lazy-load stagger) ── */
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cardReveal {
+  animation: cardIn var(--duration-slow) var(--ease-spring) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cardReveal {
+    animation: none;
+  }
+}
+
+/* ── View more ── */
+.viewMoreWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-8);
+}
+
+/* ── CTA card (Cinema-style, no photo) ── */
+.ctaCard {
+  background: var(--n-950);
+  transition:
+    box-shadow var(--duration-base) var(--ease-spring),
+    transform var(--duration-base) var(--ease-spring);
+}
+
+.ctaCard:hover {
+  box-shadow: 0 4px 24px rgba(0, 153, 153, 0.18);
+  transform: translateY(-2px);
+}
+
+.ctaWatermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-wordmark);
+  font-size: clamp(0.85rem, 2.5vw, 1.75rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  opacity: 0.1;
+  pointer-events: none;
+  user-select: none;
+  transition: opacity var(--duration-slow) ease;
+}
+
+.ctaCard:hover .ctaWatermark {
+  opacity: 0.18;
+}
+
+.ctaWordHead {
+  color: var(--white);
+}
+
+.ctaWordTail {
+  color: var(--primary);
+}
+
+.ctaNameTail {
+  color: var(--primary);
+}
