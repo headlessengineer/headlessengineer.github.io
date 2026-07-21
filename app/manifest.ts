@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { BRAND_COLORS } from '@/config/theme';
 
 export const dynamic = 'force-static';
 
@@ -9,8 +10,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: 'the head your problem needs.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#0e0f0e',
-    theme_color: '#50C878',
+    background_color: BRAND_COLORS.bgDark,
+    theme_color: BRAND_COLORS.accent,
     icons: [
       { src: '/icon.png', sizes: '192x192', type: 'image/png' },
       { src: '/icon.png', sizes: '512x512', type: 'image/png' },

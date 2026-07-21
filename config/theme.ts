@@ -15,3 +15,10 @@ export const themeConfig: ThemeConfig = {
   activeLight: 'light',
   activeDark: 'dark',
 } as const;
+
+export const BRAND_COLORS = {
+  accent: '#009999',
+  bgDark: '#0a0a0a',
+  white: '#ffffff',
+  muted: '#4d4d4d',
+} as const;

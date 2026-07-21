@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { BRAND_COLORS } from '@/config/theme';
 
 export const dynamic = 'force-static';
 export const size = { width: 1200, height: 630 };
@@ -11,7 +12,7 @@ export default function OgImage() {
         style={{
           width: 1200,
           height: 630,
-          background: '#0a0a0a',
+          background: BRAND_COLORS.bgDark,
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -23,7 +24,7 @@ export default function OgImage() {
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'baseline', gap: 0 }}>
           <span
             style={{
-              color: '#ffffff',
+              color: BRAND_COLORS.white,
               fontFamily: 'Bitcount',
               fontSize: 72,
               fontWeight: 400,
@@ -34,7 +35,7 @@ export default function OgImage() {
           </span>
           <span
             style={{
-              color: '#009999',
+              color: BRAND_COLORS.accent,
               fontFamily: 'Bitcount',
               fontSize: 72,
               fontWeight: 400,
@@ -46,12 +47,12 @@ export default function OgImage() {
         </div>
 
         {/* Accent rule - the one accent element */}
-        <div style={{ width: 48, height: 3, background: '#009999' }} />
+        <div style={{ width: 48, height: 3, background: BRAND_COLORS.accent }} />
 
         {/* Value proposition */}
         <div
           style={{
-            color: '#ffffff',
+            color: BRAND_COLORS.white,
             fontFamily: 'sans-serif',
             fontSize: 36,
             fontWeight: 700,
@@ -65,7 +66,7 @@ export default function OgImage() {
         {/* URL - muted */}
         <div
           style={{
-            color: '#4d4d4d',
+            color: BRAND_COLORS.muted,
             fontFamily: 'sans-serif',
             fontSize: 20,
             fontWeight: 400,

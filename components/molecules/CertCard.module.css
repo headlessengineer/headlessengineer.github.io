@@ -4,14 +4,14 @@
   background: var(--surface-card);
   border-radius: var(--r-lg);
   padding: var(--sp-lg);
-  box-shadow: 0 4px 24px rgba(0, 153, 153, 0);
+  box-shadow: 0 4px 24px transparent;
   transition:
     box-shadow var(--duration-fast) var(--ease-out),
     transform var(--duration-fast) var(--ease-out);
 }
 
 .card:hover {
-  box-shadow: 0 4px 24px rgba(0, 153, 153, 0.18);
+  box-shadow: var(--shadow-glow);
   transform: translateY(-2px);
 }
 

@@ -1,5 +1,6 @@
 import { getAllArticles } from './articles';
 import { getAllProjects } from './projects';
+import { BRAND_COLORS } from '../config/theme';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://headlessengineer.github.io';
 
@@ -35,8 +36,8 @@ export function generateManifest() {
     description: 'Tech solutions for business problems.',
     start_url: '/',
     display: 'standalone',
-    background_color: '#0a0a0a',
-    theme_color: '#009999',
+    background_color: BRAND_COLORS.bgDark,
+    theme_color: BRAND_COLORS.accent,
     icons: [
       { src: '/icon.png', sizes: '192x192', type: 'image/png' },
       { src: '/icon.png', sizes: '512x512', type: 'image/png' },

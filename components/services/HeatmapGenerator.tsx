@@ -103,19 +103,22 @@ function toSquare(days: DayData[]): (DayData | null)[][] {
 
 type ColorScheme = 'single' | 'per-level';
 
-function hexToRgba(hex: string, alpha: number): string {
-  const clean = hex.replace('#', '');
-  const r = parseInt(clean.slice(0, 2), 16);
-  const g = parseInt(clean.slice(2, 4), 16);
-  const b = parseInt(clean.slice(4, 6), 16);
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+function colorWithAlpha(color: string, alpha: number): string {
+  if (color.startsWith('#')) {
+    const clean = color.replace('#', '');
+    const r = parseInt(clean.slice(0, 2), 16);
+    const g = parseInt(clean.slice(2, 4), 16);
+    const b = parseInt(clean.slice(4, 6), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+  return `color-mix(in srgb, ${color} ${Math.round(alpha * 100)}%, transparent)`;
 }
 
 function deriveDefaults(accent: string): string[] {
   return [
-    hexToRgba(accent, 0.30),
-    hexToRgba(accent, 0.52),
-    hexToRgba(accent, 0.76),
+    colorWithAlpha(accent, 0.30),
+    colorWithAlpha(accent, 0.52),
+    colorWithAlpha(accent, 0.76),
     accent,
   ];
 }
@@ -210,9 +213,9 @@ export function HeatmapGenerator() {
     if (colorScheme === 'single') {
       return [
         '',
-        hexToRgba(singleColor, 0.22),
-        hexToRgba(singleColor, 0.45),
-        hexToRgba(singleColor, 0.72),
+        colorWithAlpha(singleColor, 0.22),
+        colorWithAlpha(singleColor, 0.45),
+        colorWithAlpha(singleColor, 0.72),
         singleColor,
       ];
     }

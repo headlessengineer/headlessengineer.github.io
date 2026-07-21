@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og';
+import { BRAND_COLORS } from '@/config/theme';
 
 export const dynamic = 'force-static';
 export const size = { width: 32, height: 32 };
@@ -11,17 +12,17 @@ export default function Icon() {
         style={{
           width: 32,
           height: 32,
-          background: '#0a0a0a',
+          background: BRAND_COLORS.bgDark,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           borderRadius: 4,
-          border: '1.5px solid #009999',
+          border: `1.5px solid ${BRAND_COLORS.accent}`,
         }}
       >
         <span
           style={{
-            color: '#ffffff',
+            color: BRAND_COLORS.white,
             fontFamily: 'sans-serif',
             fontWeight: 900,
             fontSize: 16,

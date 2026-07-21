@@ -10,17 +10,17 @@ export interface ThemePalette {
 
 export const palettes: Record<ThemeName, ThemePalette> = {
   light: {
-    background: '#ffffff',
-    foreground: '#0a0a0a',
-    accent: '#009999',
-    muted: '#808080',
-    tertiary: '#f2f2f2',
+    background: 'var(--n-50)',
+    foreground: 'var(--n-950)',
+    accent: 'var(--accent-brand)',
+    muted: 'var(--n-500)',
+    tertiary: 'var(--n-100)',
   },
   dark: {
-    background: '#0a0a0a',
-    foreground: '#ffffff',
-    accent: '#009999',
-    muted: '#808080',
-    tertiary: '#1f1f1f',
+    background: 'var(--n-950)',
+    foreground: 'var(--white)',
+    accent: 'var(--accent-brand)',
+    muted: 'var(--n-500)',
+    tertiary: 'var(--n-800)',
   },
 };

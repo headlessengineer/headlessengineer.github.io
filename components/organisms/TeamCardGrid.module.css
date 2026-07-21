@@ -89,7 +89,7 @@
 }
 
 .card[data-variant="1"]:hover {
-  box-shadow: 0 4px 24px rgba(0, 153, 153, 0.18);
+  box-shadow: var(--shadow-glow);
   transform: translateY(-2px);
 }
 
@@ -160,7 +160,7 @@
 }
 
 .card[data-variant="2"]:hover {
-  box-shadow: 0 4px 24px rgba(0, 153, 153, 0.18);
+  box-shadow: var(--shadow-glow);
   transform: translateY(-2px);
 }
 
@@ -269,7 +269,7 @@
 .card[data-variant="3"]:hover {
   box-shadow:
     0 0 0 1px var(--primary),
-    0 4px 32px rgba(0, 153, 153, 0.22);
+    var(--shadow-glow-lg);
   transform: translateY(-2px);
 }
 
@@ -457,7 +457,7 @@
 .card[data-variant="5"]:hover {
   box-shadow:
     0 0 0 1px var(--primary),
-    0 4px 32px rgba(0, 153, 153, 0.18);
+    var(--shadow-glow);
   transform: translateY(-2px);
 }
 
@@ -483,8 +483,8 @@
   transition: background var(--duration-fast) ease;
 }
 
-.card[data-variant="5"]:hover .termDot:nth-child(1) { background: #e55555; }
-.card[data-variant="5"]:hover .termDot:nth-child(2) { background: #cccc00; }
+.card[data-variant="5"]:hover .termDot:nth-child(1) { background: var(--fg-error); }
+.card[data-variant="5"]:hover .termDot:nth-child(2) { background: var(--fg-warning); }
 .card[data-variant="5"]:hover .termDot:nth-child(3) { background: var(--primary); }
 
 .termTitle {
@@ -625,7 +625,7 @@
 }
 
 .ctaCard:hover {
-  box-shadow: 0 4px 24px rgba(0, 153, 153, 0.18);
+  box-shadow: var(--shadow-glow);
   transform: translateY(-2px);
 }
 

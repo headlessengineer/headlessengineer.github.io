@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { marked } from 'marked';
 import { CodeCopyButton } from '../atoms/CodeCopyButton';
+import { ExcalidrawDiagram } from './ExcalidrawDiagram';
 import { palettes } from '../../theme-palette';
 import styles from './ArticleContent.module.css';
 
@@ -35,6 +36,7 @@ export function ArticleContent({ content }: ArticleContentProps) {
 
     const initContent = async () => {
       const mermaidBlocks = contentRef.current!.querySelectorAll('pre code.language-mermaid');
+      const excalidrawBlocks = contentRef.current!.querySelectorAll('pre code.language-excalidraw');
 
       if (mermaidBlocks.length > 0) {
         const mermaid = (await import('mermaid')).default;
@@ -84,6 +86,26 @@ export function ArticleContent({ content }: ArticleContentProps) {
           const root = createRoot(btn);
           rootsRef.current.push(root);
           root.render(<CodeCopyButton code={code} />);
+        });
+      }
+
+      if (cancelled) return;
+
+      if (excalidrawBlocks.length > 0) {
+        excalidrawBlocks.forEach((block) => {
+          const code = block.textContent || '';
+          const pre = block.parentElement;
+          if (pre) {
+            const div = document.createElement('div');
+            div.className = 'excalidraw-wrapper';
+            div.style.position = 'relative';
+            div.style.margin = '2rem 0';
+            pre.replaceWith(div);
+            
+            const root = createRoot(div);
+            rootsRef.current.push(root);
+            root.render(<ExcalidrawDiagram data={code} />);
+          }
         });
       }
 

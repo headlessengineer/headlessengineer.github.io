@@ -13,6 +13,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@excalidraw/excalidraw": "^0.18.1",
     "@types/qrcode": "^1.5.6",
     "gray-matter": "4.0.3",
     "marked": "15.0.12",
